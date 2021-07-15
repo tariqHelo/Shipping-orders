@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CountryController;
+use App\Http\Controllers\Admin\CityController;
+use App\Http\Controllers\Admin\AreaController;
+use App\Http\Controllers\Admin\ServiceController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +22,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('layouts.admin');
 });
+
+Route::resource('/country',    CountryController::class);
+Route::resource('/city',       CityController::class);
+Route::resource('/area',       AreaController::class);
+Route::resource('/service',    ServiceController::class);

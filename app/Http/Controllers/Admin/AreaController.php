@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Service;
+use App\Models\Area;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class ServiceController extends Controller
+class AreaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,9 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        $areas = Area::all();
+        return view('admin.area.index')
+        ->withAreas($areas);
     }
 
     /**
@@ -24,7 +27,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.area.create');
     }
 
     /**
@@ -35,16 +38,19 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $areas = Area::create( $request->all() );
+
+        return redirect()->route('area.index')
+        ->with('success', "Product ($areas->name) created.");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Service  $service
+     * @param  \App\Models\Area  $area
      * @return \Illuminate\Http\Response
      */
-    public function show(Service $service)
+    public function show(Area $area)
     {
         //
     }
@@ -52,10 +58,10 @@ class ServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Service  $service
+     * @param  \App\Models\Area  $area
      * @return \Illuminate\Http\Response
      */
-    public function edit(Service $service)
+    public function edit(Area $area)
     {
         //
     }
@@ -64,10 +70,10 @@ class ServiceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Service  $service
+     * @param  \App\Models\Area  $area
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Service $service)
+    public function update(Request $request, Area $area)
     {
         //
     }
@@ -75,10 +81,10 @@ class ServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Service  $service
+     * @param  \App\Models\Area  $area
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+    public function destroy(Area $area)
     {
         //
     }

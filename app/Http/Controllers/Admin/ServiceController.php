@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Country;
+use App\Models\Service;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class CountryController extends Controller
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,9 @@ class CountryController extends Controller
      */
     public function index()
     {
-        //
+       $services = Service::all();
+        return view('admin.service.index')
+        ->withServices($services);
     }
 
     /**
@@ -24,7 +27,7 @@ class CountryController extends Controller
      */
     public function create()
     {
-        //
+       return view('admin.service.create');
     }
 
     /**
@@ -35,16 +38,19 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $services = Service::create( $request->all() );
+
+         return redirect()->route('service.index')
+            ->with('success', "Product ($services->name) created.");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Country  $country
+     * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function show(Country $country)
+    public function show(Service $service)
     {
         //
     }
@@ -52,10 +58,10 @@ class CountryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Country  $country
+     * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function edit(Country $country)
+    public function edit(Service $service)
     {
         //
     }
@@ -64,10 +70,10 @@ class CountryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Country  $country
+     * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Country $country)
+    public function update(Request $request, Service $service)
     {
         //
     }
@@ -75,10 +81,10 @@ class CountryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Country  $country
+     * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Country $country)
+    public function destroy(Service $service)
     {
         //
     }
