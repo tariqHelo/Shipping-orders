@@ -49,7 +49,7 @@
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="status" id="status-draft" value="draft" >
+                                <input class="form-check-input" type="radio" name="status" id="status-draft" value="hidden" >
                                 <label class="form-check-label" for="status-draft">
                                     مخفي
                                 </label>

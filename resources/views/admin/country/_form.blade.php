@@ -1,39 +1,22 @@
-@extends('layouts.admin')
-
-@section('title')
-Products <a href="">Create</a>
-@endsection
-
-@section('breadcrumb')
-<ol class="breadcrumb float-sm-right">
-    <li class="breadcrumb-item"><a href="#">Home</a></li>
-    <li class="breadcrumb-item active">Products</li>
-</ol>
-@endsection
-
-@section('content')
-    <!-- left column -->
-          <div class="col-md-12">
-            <!-- general form elements -->
-            <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title-rtl">إضافة دولة</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form role="form">
-                <div class="card-body">
+ <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">إسم البلد </label>
-                    <input type="string" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    <input type="string" class="form-control" name="name" id="exampleInputEmail1" placeholder="إسم البلد">
                   </div>
                    <div class="form-group">
                     <label for="exampleInputEmail1">إسم البلد بالإنجليزية</label>
-                    <input type="string" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    <input type="string" class="form-control" name="english_name" id="exampleInputEmail1" placeholder="إسم البلد بالإنجليزية">
                   </div>
-                 
+                   <div class="form-group">
+                      <label>إضافة المدينة </label>
+                      <select class="select2"  name="cities[]" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
+                        @foreach($cities as $id => $cities)
+                            <option value="{{ $id }}" {{ in_array($id, old('cities', [])) ? 'selected' : '' }}>{{ $cities }}</option>
+                        @endforeach
+                      </select>
+                   </div>
                     <div class="form-group">
-                        <label for="status">Status</label>
+                        <label for="status">الحالة</label>
                         <div>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="status" id="status-active" value="active">
@@ -62,10 +45,5 @@ Products <a href="">Create</a>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary">{{$button}}</button>
                 </div>
-              </form>
-            </div>
-            <!-- /.card -->
-         </div>
-@endsection

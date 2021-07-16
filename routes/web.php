@@ -24,6 +24,8 @@ Route::get('/', function () {
 });
 
 Route::resource('/country',    CountryController::class);
+Route::get('/country/delete/{id}', [CountryController::class , 'destroy'])->name('country.delete');
+Route::get('/country/edit/{id}', [CountryController::class , 'edit'])->name('country.edit');
 Route::resource('/city',       CityController::class);
 Route::resource('/area',       AreaController::class);
 Route::resource('/service',    ServiceController::class);

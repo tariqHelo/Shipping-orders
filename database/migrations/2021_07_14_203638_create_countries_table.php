@@ -14,12 +14,13 @@ class CreateCountriesTable extends Migration
     public function up()
     {
         Schema::create('countries', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('english_name');
-            $table->enum('status' , ['active', 'draft' , 'hidden']);
-            $table->foreignId('city_id')->constrained('cities')->restrictOnDelete();
-            $table->timestamps();
+             $table->id();
+             $table->string('name');
+             $table->string('english_name');
+             $table->enum('status' , ['active', 'draft' , 'hidden']);
+             $table->foreignId("city_id")->nullable();
+             $table->foreign('city_id')->references('id')->on("cities")->cascadeOnDelete()->cascadeOnUpdate();
+             $table->timestamps();
         });
     }
 

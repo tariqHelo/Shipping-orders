@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Country;
+use App\Models\City;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 class CountryController extends Controller
 {
     /**
@@ -27,7 +29,11 @@ class CountryController extends Controller
      */
     public function create()
     {    
-        return view('admin.country.create');
+        $cities = City::all()->pluck('name', 'id');
+         $country = Country::all();
+        return view('admin.country.create')
+        ->withCities($cities);
+        // ->withCountry($country);
     }
 
     /**
@@ -40,10 +46,10 @@ class CountryController extends Controller
     {
         // $request->validate(Product::validateRules());
 
-        $countries = Country::create( $request->all() );
-
-        return redirect()->route('country.index')
-            ->with('success', "Product ($countries->name) created.");
+        $country = Country::create( $request->all() );
+        $country->cities()->sync($request->input('cities', []));
+        session()->flash('msg', "s:create ($country->name) successfully ");
+        return redirect(route('country.index'));
     }
 
     /**
@@ -52,9 +58,13 @@ class CountryController extends Controller
      * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function show(Country $country)
+    public function show($id)
     {
-        //
+         $country = Country::findOrFail($id);
+         $cities = City::where('id', '=', $country->id)->get();
+         return view('admin.country.show', [
+         'cities' => $cities,
+         ]);
     }
 
     /**
@@ -63,9 +73,15 @@ class CountryController extends Controller
      * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function edit(Country $country)
+    public function edit($id)
     {
-        //
+        $country = Country::findOrFail($id);
+        $cities = City::all()->pluck('name', 'id');
+        $country->load('cities');
+        return view('admin.country.edit', [
+            'country' => $country,
+            'cities' => $cities,
+        ]);
     }
 
     /**
@@ -75,9 +91,15 @@ class CountryController extends Controller
      * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Country $country)
-    {
-        //
+    public function update(Request $request, $id)
+    { //dd(20);
+        $country = Country::findOrFail($id);
+        $country->cities()->sync($request->input('cities', []));
+        //$request->validate( Product::validateRules() );
+
+        $country->update( $request->all() );
+        session()->flash('msg', "s:create ($country->name) updated successfully ");
+        return redirect()->route('country.index');
     }
 
     /**
@@ -86,8 +108,12 @@ class CountryController extends Controller
      * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Country $country)
+    public function destroy($id)
     {
-        //
+           $country = Country::findOrFail($id);
+           $product->delete();
+        session()->flash("msg", " country ($country->name) Deleted Successfully");
+           return redirect()->route('country.index');
+
     }
 }

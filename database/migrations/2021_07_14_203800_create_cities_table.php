@@ -18,6 +18,10 @@ class CreateCitiesTable extends Migration
              $table->string('name');
              $table->string('english_name');
              $table->enum('status' , ['active', 'draft' , 'hidden']);
+            //  $table->foreignId("county_id")->nullable();
+            //  $table->foreign('county_id')->references('id')->on("countries")->cascadeOnDelete()->cascadeOnUpdate();
+             $table->foreignId("area_id")->nullable();
+             $table->foreign('area_id')->references('id')->on("areas")->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

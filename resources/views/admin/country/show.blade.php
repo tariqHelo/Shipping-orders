@@ -24,32 +24,32 @@
                 <thead>
                   <tr>
                   <th>id</th>
-                  <th>إسم الدولة</th>
-                  <th>الإسم بالإنجليزي</th>
+                  <th>إسم المدينة </th>
+                  <th>الإسم المدينة بالإنجليزي</th>
                   <th>الحالة</th>
                   <th>الإجراءات</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($countries as $country)
+                  @foreach ($cities as $id => $city)
                     <tr>
-                         <th>{{$country->id}}</th>
-                        <td>{{$country->name}}</td>
-                        <td>{{$country->english_name}}
+                         <th>{{$city->id}}</th>
+                        <td>{{$city->name}}</td>
+                        <td>{{$city->english_name}}
                         </td>
                         <td>
-                              @if($country->status=='active')
+                              @if($city->status=='active')
                                   <span class="btn btn-success btn-sm">مفعل</span>
-                              @elseif($country->status=='draft')
+                              @elseif($city->status=='draft')
                                   <span class="btn btn-warning btn-sm">غير مفعل</span>
                               @else($order->order_status_id==3)
                                   <span class="btn btn-danger btn-sm">مخفي</span>
                               @endif
                           </td>
                         	<td>   
-                              <a href="{{ route('country.edit', $country->id) }}" class="btn btn-primary btn-sm"><i class='fa fa-edit'></i></a>
-                              <a href="{{ route('country.show', $country->id) }}" class="btn btn-success btn-sm"><i class='fa fa-eye'></i></a>
-                              <a href="{{ route('country.delete', $country->id) }}" onclick='return confirm("Are you sure dude?")' class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></a>
+                              <a href="{{ route('country.edit', $city->id) }}" class="btn btn-primary btn-sm"><i class='fa fa-edit'></i></a>
+                              <a href="" class="btn btn-success btn-sm"><i class='fa fa-eye'></i></a>
+                              <a href="{{ route('country.delete', $city->id) }}" onclick='return confirm("Are you sure dude?")' class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></a>
                         </td>
                     </tr>
                   @endforeach
@@ -57,12 +57,11 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>id</th>
-                  <th>إسم الدولة</th>
-                  <th>الإسم بالإنجليزي
-                  </th>
+                   <th>id</th>
+                  <th>إسم المدينة </th>
+                  <th>الإسم المدينة بالإنجليزي</th>
                   <th>الحالة</th>
-                  <th> الإجراءات</th>
+                  <th>الإجراءات</th>
                 </tr>
                 </tfoot>
               </table>
