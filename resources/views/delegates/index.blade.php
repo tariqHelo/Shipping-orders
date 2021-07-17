@@ -1,20 +1,19 @@
 @extends('layouts.admin')
 
-@section('title', ' صفحة الإضافة ')
+@section('title', 'جميع تاجر')
 
 
 @section('breadcrumb')
 <ol class="breadcrumb float-sm-right">
     <li class="breadcrumb-item"><a href="#">Home</a></li>
-    <li class="breadcrumb-item active">country</li>
+    <li class="breadcrumb-item active">Country</li>
 </ol>
 @endsection
 
+
 @section('content')
 
- 
-    <!-- left column -->
-          <div class="col-md-12">
+<div class="col-md-12">
 
               @if ($errors->any())
               <div class="alert alert-danger">
@@ -28,19 +27,33 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title-rtl">إضافة دولة</h3>
+                <h3 class="card-title-rtl">إضافة تاجر</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form role="form" action="{{route('country.store')}}" method="POST">
+              <form role="form" action="" method="POST">
                 @csrf
                   <div class="card-body">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">إسم البلد </label>
-                    <input type="string" class="form-control @error('name') is-invalid @enderror" name="name" id="exampleInputEmail1" placeholder="إسم البلد">
-                      @error('name')
-                        <p class="text-danger">{{ $message }}</p>
-                      @enderror
+                  <div class="row">
+                           <div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label">First Name</label>
+																<input type="text" id="firstName" class="form-control" placeholder="Chee Kin">
+															</div>
+														</div>
+                             <div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label">First Name</label>
+																<input type="text" id="firstName" class="form-control" placeholder="Chee Kin">
+															</div>
+														</div>
+                             <div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label">First Name</label>
+																<input type="text" id="firstName" class="form-control" placeholder="Chee Kin">
+															</div>
+														</div>
+                      
                   </div>
                    <div class="form-group">
                     <label for="exampleInputEmail1">إسم البلد بالإنجليزية</label>
@@ -49,9 +62,9 @@
                    <div class="form-group">
                       <label>إضافة المدينة </label>
                       <select class="select2"  name="cities[]" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
-                        @foreach($cities as $id => $cities)
+                        {{-- @foreach($cities as $id => $cities)
                             <option value="{{ $id }}" {{ in_array($id, old('cities', [])) ? 'selected' : '' }}>{{ $cities }}</option>
-                        @endforeach
+                        @endforeach --}}
                       </select>
                    </div>
                     <div class="form-group">
@@ -76,9 +89,7 @@
                                 </label>
                             </div>
                         </div>
-                        {{-- @error('status')
-                        <p class="text-danger">{{ $message }}</p>
-                        @enderror --}}
+                      
                     </div>
                 </div>
                 <!-- /.card-body -->

@@ -20,7 +20,7 @@ use App\Http\Controllers\Admin\ServiceController;
 */
 
 Route::get('/', function () {
-    return view('layouts.admin');
+    return view('delegates.index');
 });
 
 Route::resource('/country',    CountryController::class);

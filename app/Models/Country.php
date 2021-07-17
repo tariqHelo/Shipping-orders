@@ -19,6 +19,6 @@ class Country extends Model
 
     public function cities()
     {
-    return $this->belongsToMany(City::class);
+       return $this->belongsToMany(City::class);
     }
 }

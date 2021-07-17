@@ -31,7 +31,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($cities as $id => $city)
+                  @foreach ($cities as $id => $city )
                     <tr>
                          <th>{{$city->id}}</th>
                         <td>{{$city->name}}</td>
@@ -47,9 +47,9 @@
                               @endif
                           </td>
                         	<td>   
-                              <a href="{{ route('country.edit', $city->id) }}" class="btn btn-primary btn-sm"><i class='fa fa-edit'></i></a>
+                              <a href="{{ route('city.edit', $city->id) }}" class="btn btn-primary btn-sm"><i class='fa fa-edit'></i></a>
                               <a href="" class="btn btn-success btn-sm"><i class='fa fa-eye'></i></a>
-                              <a href="{{ route('country.delete', $city->id) }}" onclick='return confirm("Are you sure dude?")' class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></a>
+                              <a href="{{ route('city.delete', $city->id) }}" onclick='return confirm("Are you sure dude?")' class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></a>
                         </td>
                     </tr>
                   @endforeach
