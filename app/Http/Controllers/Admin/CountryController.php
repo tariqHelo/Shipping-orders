@@ -35,10 +35,9 @@ class CountryController extends Controller
     public function create()
     {    
         $cities = City::all()->pluck('name', 'id');
-         $country = Country::all();
-        return view('admin.country.create')
-        ->withCities($cities);
-        // ->withCountry($country);
+        return view('admin.country.create',[
+            'cities' => $cities
+        ]);
     }
 
     /**
@@ -66,8 +65,8 @@ class CountryController extends Controller
     public function show($id)
     {
          $country = Country::findOrFail($id);
-         $cities = City::where('id', '=', $country->id)->get();
-         dd($cities);
+         //$cities = City::where('id', '=', $country->id)->get();
+         $cities= $country->cities;
          return view('admin.country.show', [
          'cities' => $cities,
          ]);

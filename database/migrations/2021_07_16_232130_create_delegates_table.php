@@ -17,7 +17,6 @@ class CreateDelegatesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('nationality');
-            $table->string('name');
             $table->string('email');
             $table->string('image');
             $table->date('work_start');

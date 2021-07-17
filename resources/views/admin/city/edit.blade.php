@@ -21,49 +21,14 @@ Products <a href="">Create</a>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form role="form">
-                <div class="card-body">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">إسم البلد </label>
-                    <input type="string" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                  </div>
-                   <div class="form-group">
-                    <label for="exampleInputEmail1">إسم البلد بالإنجليزية</label>
-                    <input type="string" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                  </div>
-                 
-                    <div class="form-group">
-                        <label for="status">Status</label>
-                        <div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="status" id="status-active" value="active">
-                                <label class="form-check-label" for="status-active">
-                                    فعال
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="status" id="status-draft" value="draft" >
-                                <label class="form-check-label" for="status-draft">
-                                    غير مفعل
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="status" id="status-draft" value="draft" >
-                                <label class="form-check-label" for="status-draft">
-                                    مخفي
-                                </label>
-                            </div>
-                        </div>
-                        {{-- @error('status')
-                        <p class="text-danger">{{ $message }}</p>
-                        @enderror --}}
-                    </div>
-                </div>
-                <!-- /.card-body -->
+             <form role="form" action="{{route('city.update' , $city->id)}}" method="post">
+                @csrf
+                @method('PUT')
+                
+                 @include('admin.city._form', [
+                    'button' => 'تعديل'
+                ])
 
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
               </form>
             </div>
             <!-- /.card -->

@@ -18,12 +18,11 @@ class CreateDealersTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone1');
-            $table->string('phone1');
+            $table->string('phone2');
             $table->string('logo');
             $table->foreignId('country_id')->constrained();
             $table->foreignId('city_id')->constrained();
             $table->foreignId('area_id')->constrained();
-            $table->foreignId('country_id')->constrained();
             $table->enum('method' , ['bank', 'monetary']);
             $table->string('commission');
             $table->enum('status' , ['active', 'draft' , 'hidden']);

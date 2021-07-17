@@ -20,7 +20,7 @@ use App\Http\Controllers\Admin\ServiceController;
 */
 
 Route::get('/', function () {
-    return view('delegates.index');
+    return view('admin.orders.create');
 });
 
 Route::resource('/country',    CountryController::class);

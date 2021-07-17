@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\City;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CityRequest;
 
 class CityController extends Controller
 {
@@ -26,8 +27,12 @@ class CityController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('admin.city.create');
+    {   
+        $city = City::all();;
+        return view('admin.city.create',[
+            'city'=> $city,
+        ]);
+        
     }
 
     /**
@@ -36,7 +41,7 @@ class CityController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CityRequest $request)
     {
           $cities = City::create( $request->all() );
 
@@ -73,7 +78,7 @@ class CityController extends Controller
      * @param  \App\Models\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, City $city)
+    public function update(CityRequest $request, City $city)
     {
         //
     }
