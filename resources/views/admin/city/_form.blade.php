@@ -1,25 +1,21 @@
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach($errors->all() as $message)
-                <li>{{ $message }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-    
-    
+
     <div class="card-body">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">إسم المدينة </label>
-                          <input type="string" class="form-control" name="name" id="exampleInputEmail1" placeholder="Enter email" value="{{ old('name') }}">
-                        </div>
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">إسم المدينة بالإنجليزية</label>
-                          <input type="string" class="form-control" name="english_name" id="exampleInputEmail1" placeholder="Enter email" value="{{ old('name') }}">
-                        </div>
-                      
-                      <div class="form-group">
+                       
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">إسم البلد </label>
+                    <input type="string" class="form-control @error('name') is-invalid @enderror" name="name"  placeholder="إسم البلد" value="{{ old('name') }}">
+                      @error('name')
+                        <p class="text-danger">{{ $message }}</p>
+                      @enderror
+                  </div>
+                   <div class="form-group">
+                    <label for="exampleInputEmail1">إسم البلد بالإنجليزية</label>
+                    <input type="string" class="form-control @error('english_name') is-invalid @enderror" name="english_name"  placeholder="إسم البلد بالإنجليزية" value="{{ old('name') }}">
+                     @error('english_name')
+                        <p class="text-danger">{{ $message }}</p>
+                      @enderror
+                  </div> 
+                    <div class="form-group">
                         <label for="status">الحالة</label>
                         <div>
                             <div class="form-check">
@@ -40,11 +36,11 @@
                                     مخفي
                                 </label>
                             </div>
-                             @error('status')
-                              <p class="text-danger">{{ $message }}</p>
+                                @error('status')
+                                <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
-                       
+                        
                     </div>
       </div>
         <!-- /.card-body -->

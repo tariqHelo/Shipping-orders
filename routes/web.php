@@ -7,6 +7,16 @@ use App\Http\Controllers\Admin\AreaController;
 use App\Http\Controllers\Admin\ServiceController;
 
 use App\Http\Controllers\OrderController;
+
+
+
+use App\Http\Controllers\Front\ForBusinessController;
+use App\Http\Controllers\Front\ForDriversController;
+use App\Http\Controllers\Front\TrackPackageController;
+use App\Http\Controllers\Front\AboutUsController;
+use App\Http\Controllers\Front\ContactUsController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,8 +28,16 @@ use App\Http\Controllers\OrderController;
 |
 */
 
+Route::resource('/for_business', ForBusinessController::class);
+Route::resource('/for_drivers', ForDriversController::class);
+Route::resource('/TrackPackage', TrackPackageController::class);
+Route::resource('/about', AboutUsController::class);
+Route::resource('/Contact_Us', ContactUsController::class);
+
+
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.front');
 });
 
 Route::get('/dashboard', function () {

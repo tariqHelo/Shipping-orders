@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Service;
 
 class ServiceRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class ServiceRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,10 @@ class ServiceRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|max:255',
+            'english_name' => 'required|max:255',
+            'status' => 'required:' . Service::STATUS_ACTIVE . ',' . Service::STATUS_HIDDEN .',' .
+            Service::STATUS_DRAFT,
         ];
     }
 }

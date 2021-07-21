@@ -13,6 +13,15 @@
 @section('content')
     <!-- left column -->
           <div class="col-md-12">
+            @if ($errors->any())
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach($errors->all() as $message)
+                      <li>{{ $message }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+              @endif  
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
@@ -23,56 +32,50 @@
               <form role="form" action="{{route('service.store')}}" method="POST">
                 @csrf
                 @method('POST')
-                <div class="card-body">
+               <div class="card-body">
+                       
                   <div class="form-group">
                     <label for="exampleInputEmail1">إسم الخدمة </label>
-                    <input type="string" class="form-control" name="name" id="exampleInputEmail1" placeholder="Enter email">
+                    <input type="string" class="form-control @error('name') is-invalid @enderror" name="name"  placeholder="إسم البلد" value="{{ old('name') }}">
+                      @error('name')
+                        <p class="text-danger">{{ $message }}</p>
+                      @enderror
                   </div>
                    <div class="form-group">
                     <label for="exampleInputEmail1">إسم الخدمة بالإنجليزية</label>
-                    <input type="string" class="form-control" name="english_name" id="exampleInputEmail1" placeholder="Enter email">
-                  </div>
-                 <div class="form-group">
-                    <label for="type">النوع</label>
-                        <div>
-                              <div class="custom-control custom-checkbox">
-                                  <input class="custom-control-input" name="type" type="radio" id="customCheckbox1" value="local">
-                                  <label for="customCheckbox1" class="custom-control-label">محلي</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                  <input class="custom-control-input" name="type" type="radio" id="customCheckbox2" value="international">
-                                  <label for="customCheckbox2" class="custom-control-label">دولي</label>
-                              </div>
-                              
-                        </div>
-                    </div>
+                    <input type="string" class="form-control @error('english_name') is-invalid @enderror" name="english_name"  placeholder="إسم البلد بالإنجليزية" value="{{ old('name') }}">
+                     @error('english_name')
+                        <p class="text-danger">{{ $message }}</p>
+                      @enderror
+                  </div> 
                     <div class="form-group">
                         <label for="status">الحالة</label>
                         <div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="status" id="status-active" value="active">
+                                <input class="form-check-input" type="radio" name="status" id="status-active" value="active" @if(old('status') == 'active') checked @endif>
                                 <label class="form-check-label" for="status-active">
                                     فعال
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="status" id="status-draft" value="draft" >
+                                <input class="form-check-input" type="radio" name="status" id="status-draft" value="draft" @if(old('status') == 'draft') checked @endif >
                                 <label class="form-check-label" for="status-draft">
                                     غير مفعل
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="status" id="status-draft" value="hidden" >
+                                <input class="form-check-input" type="radio" name="status" id="status-draft" value="hidden" @if(old('status') == 'hidden') checked @endif >
                                 <label class="form-check-label" for="status-draft">
                                     مخفي
                                 </label>
                             </div>
+                                @error('status')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                         </div>
-                        {{-- @error('status')
-                        <p class="text-danger">{{ $message }}</p>
-                        @enderror --}}
+                        
                     </div>
-                </div>
+      </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">

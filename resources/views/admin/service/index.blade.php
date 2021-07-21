@@ -38,7 +38,6 @@
                         <td>{{$service->name}}</td>
                         <td>{{$service->english_name}}
                         </td>
-
                         <td>
                               @if($service->status=='active')
                                   <span class="btn btn-success btn-sm">فعال</span>

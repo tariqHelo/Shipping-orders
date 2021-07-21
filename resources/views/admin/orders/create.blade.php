@@ -38,7 +38,7 @@
                               <div class="col-md-4">
                                 <div class="form-group">
                                   <label class="control-label">رقم الطلب</label>
-                                  <input type="text" id="firstName" class="form-control" placeholder="Chee Kin">
+                                  <input type="text" name="" id="firstName" class="form-control" placeholder="Chee Kin">
                                 </div>
                               </div>
                               <div class="col-md-4">

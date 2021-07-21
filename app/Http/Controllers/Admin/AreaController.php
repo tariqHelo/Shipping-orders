@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Area;
+
+use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -26,8 +28,11 @@ class AreaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('admin.area.create');
+    { 
+        $services = Service::all();
+        return view('admin.area.create',[
+           'services' => $services,
+        ]);
     }
 
     /**

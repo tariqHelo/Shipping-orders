@@ -10,9 +10,20 @@
 </ol>
 @endsection
 
+
+
 @section('content')
     <!-- left column -->
           <div class="col-md-12">
+             @if ($errors->any())
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach($errors->all() as $message)
+                      <li>{{ $message }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+            @endif
             <!-- general form elements -->
             <div class="card card-success">
               <div class="card-header">
