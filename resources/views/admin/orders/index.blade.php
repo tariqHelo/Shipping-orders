@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'جميع الدول')
+@section('title', 'جميع الطلبات')
 
 
 @section('breadcrumb')
@@ -16,7 +16,7 @@
 
           <div class="card">
             <div class="card-header">
-               <a type="button" class="btn btn-primary" href="{{ route('country.create') }}">إضافة <i class="fa fa-plus"></i> </a>
+               <a type="button" class="btn btn-primary" href="{{ route('order.create') }}">إضافة <i class="fa fa-plus"></i> </a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -31,7 +31,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($countries as $country)
+                  {{-- @foreach ($countries as $country)
                     <tr>
                          <th>{{$country->id}}</th>
                         <td>{{$country->name}}</td>
@@ -52,7 +52,7 @@
                               <a href="{{ route('country.delete', $country->id) }}" onclick='return confirm("Are you sure dude?")' class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></a>
                         </td>
                     </tr>
-                  @endforeach
+                  @endforeach --}}
                  
                 </tbody>
                 <tfoot>

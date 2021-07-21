@@ -6,8 +6,7 @@ use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\AreaController;
 use App\Http\Controllers\Admin\ServiceController;
 
-
-
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,12 +19,21 @@ use App\Http\Controllers\Admin\ServiceController;
 */
 
 Route::get('/', function () {
-    return view('admin.orders.create');
+    return view('welcome');
 });
 
-Route::resource('/country',    CountryController::class);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
+
+Route::resource('/country', CountryController::class);
 Route::get('/country/delete/{id}', [CountryController::class , 'destroy'])->name('country.delete');
 Route::get('/country/edit/{id}', [CountryController::class , 'edit'])->name('country.edit');
-Route::resource('/city',       CityController::class);
-Route::resource('/area',       AreaController::class);
-Route::resource('/service',    ServiceController::class);
+Route::resource('/city', CityController::class);
+Route::resource('/area', AreaController::class);
+Route::resource('/service', ServiceController::class);
+
+Route::resource('/order', OrderController::class);

@@ -27,7 +27,7 @@
             <!-- general form elements -->
             <div class="card card-success">
               <div class="card-header">
-                <h3 class="card-title-rtl">إضافة طلب</h3>
+                <h3 class="card-title-rtl">إضافة بيانات الطلب</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -55,7 +55,7 @@
                               </div>
 
                     </div>
-                    <div class="row">
+                    {{-- <div class="row">
                               <div class="col-md-4">
                                 <div class="form-group">
                                   <label class="control-label">رقم الطلب</label>
@@ -75,9 +75,9 @@
                                 </div>
                               </div>
 
-                    </div>
+                    </div> --}}
                      <div class="form-group">
-                        <label>Date masks:</label>
+                        <label>تاريخ الإستلام </label>
                           <div class="input-group">
                           <div class="input-group-prepend">
                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
@@ -85,7 +85,7 @@
                           <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
                     </div>
                     <div class="form-group">
-                      <label>Select</label>
+                      <label>نوع المرسل</label>
                       <select class="form-control">
                         <option>option 1</option>
                         <option>option 2</option>
@@ -94,44 +94,7 @@
                         <option>option 5</option>
                       </select>
                     </div>
-                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                              <label>Select</label>
-                              <select class="form-control">
-                                <option>option 1</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                                <option>option 5</option>
-                              </select>
-                          </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                              <label>Select</label>
-                              <select class="form-control">
-                                <option>option 1</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                                <option>option 5</option>
-                              </select>
-                          </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                              <label>Select</label>
-                              <select class="form-control">
-                                <option>option 1</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                                <option>option 5</option>
-                              </select>
-                          </div>
-                        </div>
-                    </div>
+                   
                     <div class="form-group">
                       <label for="exampleInputEmail1">إسم المستلم</label>
                       <input type="string" class="form-control @error('english_name') is-invalid @enderror" name="english_name" id="exampleInputEmail1" placeholder="إسم البلد بالإنجليزية">
@@ -143,6 +106,44 @@
                     <div class="form-group">
                       <label for="exampleInputEmail1">رقم الهاتف أخر</label>
                       <input type="string" class="form-control @error('english_name') is-invalid @enderror" name="english_name" id="exampleInputEmail1" placeholder="إسم البلد بالإنجليزية">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label>الدولة</label>
+                              <select class="form-control">
+                                <option>option 1</option>
+                                <option>option 2</option>
+                                <option>option 3</option>
+                                <option>option 4</option>
+                                <option>option 5</option>
+                              </select>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label>المدينة</label>
+                              <select class="form-control">
+                                <option>option 1</option>
+                                <option>option 2</option>
+                                <option>option 3</option>
+                                <option>option 4</option>
+                                <option>option 5</option>
+                              </select>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label>المنطقة</label>
+                              <select class="form-control">
+                                <option>option 1</option>
+                                <option>option 2</option>
+                                <option>option 3</option>
+                                <option>option 4</option>
+                                <option>option 5</option>
+                              </select>
+                          </div>
+                        </div>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">العنوان بالكامل</label>
@@ -165,7 +166,7 @@
                       <input type="string" class="form-control @error('english_name') is-invalid @enderror" name="english_name" id="exampleInputEmail1" placeholder="إسم البلد بالإنجليزية">
                     </div>
                     <div class="form-group">
-                      <label>Select</label>
+                      <label>نوع الخدمة</label>
                       <select class="form-control">
                         <option>option 1</option>
                         <option>option 2</option>
@@ -208,7 +209,7 @@
 
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">إضافة</button>
-                  <button class="btn btn-danger" type="submit"> إلغاء</button>
+                  <a href="{{route('order.index')}}" class="btn btn-danger" type="button"> إلغاء</a>
                 </div>
               </form>
             </div>
