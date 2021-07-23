@@ -27,8 +27,11 @@ class ServiceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-       return view('admin.service.create');
+    {    
+        //$service = Service::all();
+         return view('admin.service.create',[
+         'service' => new Service(),
+         ]);
     }
 
     /**
@@ -39,10 +42,10 @@ class ServiceController extends Controller
      */
     public function store(ServiceRequest $request)
     {
-         $services = Service::create( $request->all() );
+         $servic = Service::create( $request->all() );
 
          return redirect()->route('service.index')
-            ->with('success', "Product ($services->name) created.");
+            ->with('success', "Product ($servic->name) created.");
     }
 
     /**
@@ -62,9 +65,13 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function edit(ServiceRequest $service)
+    public function edit($id)
     {
-        //
+        $service = Service::findOrFail($id);
+        return view('admin.service.edit',[
+            'service'=> $service
+        ]);
+        
     }
 
     /**
@@ -74,7 +81,7 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Service $service)
+    public function update(Request $request,$service)
     {
         //
     }
@@ -85,8 +92,11 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+    public function destroy($id)
     {
-        //
+        $service = Service::findOrFail($id);
+        $service->delete();
+        session()->flash("msg", "e: Deleted ($service->name) Successfully");
+        return redirect()->route('service.index');
     }
 }

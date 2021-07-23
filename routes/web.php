@@ -1,10 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\PermissionsController;
+use App\Http\Controllers\Admin\RolesController;
+use App\Http\Controllers\Admin\UsersController;
+
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\AreaController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\ReportController;
 
 use App\Http\Controllers\OrderController;
 
@@ -28,30 +33,51 @@ use App\Http\Controllers\Front\ContactUsController;
 |
 */
 
+/*Start FrontEnd Page */
 Route::resource('/for_business', ForBusinessController::class);
 Route::resource('/for_drivers', ForDriversController::class);
 Route::resource('/TrackPackage', TrackPackageController::class);
 Route::resource('/about', AboutUsController::class);
 Route::resource('/Contact_Us', ContactUsController::class);
-
-
+/* End Route FrontEnd Page */
 
 Route::get('/', function () {
-    return view('layouts.front');
+return view('layouts.admin');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
 
+
+
+
+/* Start Admin Route */
+// Permissions
+Route::resource('permissions', PermissionsController::class);
+// Roles
+Route::resource('roles', RolesController::class);
+// Users
+Route::resource('users', UsersController::class);
+/* End Admin Route */
+
+
+
+
 Route::resource('/country', CountryController::class);
 Route::get('/country/delete/{id}', [CountryController::class , 'destroy'])->name('country.delete');
 Route::get('/country/edit/{id}', [CountryController::class , 'edit'])->name('country.edit');
+
 Route::resource('/city', CityController::class);
+Route::get('/city/delete/{id}', [CityController::class , 'destroy'])->name('city.delete');
+Route::get('/city/edit/{id}', [CityController::class , 'edit'])->name('city.edit');
+
+
 Route::resource('/area', AreaController::class);
 Route::resource('/service', ServiceController::class);
 
 Route::resource('/order', OrderController::class);
+Route::resource('/report', ReportController::class);

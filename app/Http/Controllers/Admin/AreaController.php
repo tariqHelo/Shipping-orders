@@ -68,7 +68,7 @@ class AreaController extends Controller
      */
     public function edit(Area $area)
     {
-        //
+        
     }
 
     /**

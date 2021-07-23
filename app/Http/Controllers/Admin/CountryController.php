@@ -117,7 +117,7 @@ class CountryController extends Controller
     {
            $country = Country::findOrFail($id);
            $country->delete();
-           session()->flash("msg", " Deleted ($country->name) Successfully");
+           session()->flash("msg", "e: Deleted ($country->name) Successfully");
            return redirect()->route('country.index');
 
     }

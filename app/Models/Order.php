@@ -34,7 +34,33 @@ class Order extends Model
     const STATUS_NotReceivedAndPaid = 'NotReceivedAndPaid';
     const STATUS_Delayed = 'Delayed';
 
-    
+      protected $fillable = [
+            'coupon',
+            'order_number',
+            'tracking_number',
+            'received_date',
+            'sender_id',
+            'recipient_name',
+            'phone1',
+            'phone2',
+            'dealer_id',
+            'delegate_id',
+            'country_id',
+            'city_id',
+            'area_id',
+            'service_id',
+            'address',
+            'house_number',
+            'number_of_bags',
+            'shipment_material',
+            'kg',
+            'type',
+            'Shipping_fee',
+            'order_amount',
+            'shipping_amount',
+            'notes',
+            'details',
+      ];
     
 
 }

@@ -92,7 +92,7 @@
 
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">إضافة</button>
-                  <button class="btn btn-danger" type="submit"> إلغاء</button>
+                  <a href="{{route('order.index')}}" class="btn btn-danger" type="button"> إلغاء</a>
                 </div>
               </form>
             </div>

@@ -137,36 +137,39 @@
 
 <body data-spy="scroll" data-offset="70">
     <!-- START PRELOADER -->
-        @yield('content')
-
-    <!-- END PRELOADER -->
-    <!-- START NAVBAR -->
-     @include('site.navbar')
-    <!-- END NAVBAR -->
-    <!-- START HOMEPAGE SLIDER -->
-    @include('site.homepage')
-    <!-- END HOMEPAGE SLIDER -->
-    <!-- START APP ABOUT SECTION -->
-    @include('site.app_about')
-    <!-- END APP ABOUT SECTION -->
-    <!-- START HOW IT WORKS SECTION -->
-    @include('site.how-it-works')
-    <!-- END HOW IT WORKS SECTION -->
-    <!-- START sayer Now SECTION -->
-    @include('site.about')
-    <!-- END sayer Now SECTION -->
-    <!-- START APP DOWNLOAD SECTION -->
-    @include('site.download')
-    <!-- END APP DOWNLOAD SECTION -->
-    <!-- START BLOG SECTION -->
-    @include('site.blog')
-    <!-- END BLOG SECTION -->
-    <!-- START FOOTER AREA -->
-    @include('site.footer')
-    <!-- END FOOTER AREA -->
-
+      <div class="page-content">
+        @if(View::hasSection('content'))
+            @yield('content')
+        @else
+            <!-- START NAVBAR -->
+            @include('site.navbar')
+            <!-- END NAVBAR -->
+            <!-- START HOMEPAGE SLIDER -->
+            @include('site.homepage')
+            <!-- END HOMEPAGE SLIDER -->
+            <!-- START APP ABOUT SECTION -->
+            @include('site.app_about')
+            <!-- END APP ABOUT SECTION -->
+            <!-- START HOW IT WORKS SECTION -->
+            @include('site.how-it-works')
+            <!-- END HOW IT WORKS SECTION -->
+            <!-- START sayer Now SECTION -->
+            @include('site.about')
+            <!-- END sayer Now SECTION -->
+            <!-- START APP DOWNLOAD SECTION -->
+            @include('site.download')
+            <!-- END APP DOWNLOAD SECTION -->
+            <!-- START BLOG SECTION -->
+            @include('site.blog')
+            <!-- END BLOG SECTION -->
+            <!-- START FOOTER AREA -->
+            @include('site.footer')
+            <!-- END FOOTER AREA -->
+        @endif
+     </div>
+    <!-- END PRELOADER -->   
 </body>
-    @yield('content')
+   
 
 <!-- Mirrored from www.ساير للشحن.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 05 Jul 2020 19:54:43 GMT -->
 </html>

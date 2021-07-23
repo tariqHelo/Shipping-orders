@@ -54,10 +54,11 @@
                                   <span class="btn btn-dark btn-sm">دولي</span>
                               @endif
                           </td>
+
                           <td>   
-                              <a href="" class="btn btn-primary btn-sm"><i class='fa fa-edit'></i></a>
+                              <a href="{{route('service.edit' , $service->id )}}" class="btn btn-primary btn-sm"><i class='fa fa-edit'></i></a>
                               <a href="" class="btn btn-success btn-sm"><i class='fa fa-eye'></i></a>
-                              <a href="" onclick='return confirm("Are you sure dude?")' class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></a>
+                              <a href="{{route('service.destroy' , $service->id )}}" onclick='return confirm("Are you sure dude?")' class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></a>
                         </td>
                     </tr>
                   @endforeach

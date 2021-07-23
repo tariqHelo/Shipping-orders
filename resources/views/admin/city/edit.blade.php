@@ -1,8 +1,6 @@
 @extends('layouts.admin')
 
-@section('title')
-Products <a href="">Create</a>
-@endsection
+@section('title' , '')
 
 @section('breadcrumb')
 <ol class="breadcrumb float-sm-right">
@@ -14,6 +12,15 @@ Products <a href="">Create</a>
 @section('content')
     <!-- left column -->
           <div class="col-md-12">
+              @if ($errors->any())
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach($errors->all() as $message)
+                      <li>{{ $message }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+              @endif
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">

@@ -13,69 +13,108 @@
 
 @section('content')
     @include('shared.msg')
+      <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">جميع الطلبات </h3>
 
-          <div class="card">
-            <div class="card-header">
-               <a type="button" class="btn btn-primary" href="{{ route('order.create') }}">إضافة <i class="fa fa-plus"></i> </a>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                  <tr>
-                  <th>id</th>
-                  <th>إسم الدولة</th>
-                  <th>الإسم بالإنجليزي</th>
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                    
+                  <th width="10%">رقم الطلب</th>
+                  <th width="10%">التاريخ </th>
+                  <th width="15%">التاريخ</th>
+                  <th>المرسل</th>
+                  <th>المستلم</th>
+                  <th>الجهة</th>
                   <th>الحالة</th>
                   <th>الإجراءات</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {{-- @foreach ($countries as $country)
-                    <tr>
-                         <th>{{$country->id}}</th>
-                        <td>{{$country->name}}</td>
-                        <td>{{$country->english_name}}
-                        </td>
-                        <td>
-                              @if($country->status=='active')
-                                  <span class="btn btn-success btn-sm">مفعل</span>
-                              @elseif($country->status=='draft')
-                                  <span class="btn btn-warning btn-sm">غير مفعل</span>
-                              @else($order->order_status_id==3)
-                                  <span class="btn btn-danger btn-sm">مخفي</span>
-                              @endif
-                          </td>
-                        	<td>   
-                              <a href="{{ route('country.edit', $country->id) }}" class="btn btn-primary btn-sm"><i class='fa fa-edit'></i></a>
-                              <a href="{{ route('country.show', $country->id) }}" class="btn btn-success btn-sm"><i class='fa fa-eye'></i></a>
-                              <a href="{{ route('country.delete', $country->id) }}" onclick='return confirm("Are you sure dude?")' class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></a>
-                        </td>
+                  <th>العرض</th>
+                  <th>تتبع</th>
+                  <th>تأجيل</th>
+                  <th>تحويل</th>
+                  <th>فردي</th>
+                  <th>ملاحظات</th>
+                  <th>إلغاء</th>
                     </tr>
-                  @endforeach --}}
-                 
-                </tbody>
-                <tfoot>
-                <tr>
-                  <th>id</th>
-                  <th>إسم الدولة</th>
-                  <th>الإسم بالإنجليزي
-                  </th>
-                  <th>الحالة</th>
-                  <th> الإجراءات</th>
-                </tr>
-                </tfoot>
-              </table>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>183</td>
+                      <td>John Doe</td>
+                      <td>11-7-2014</td>
+                      <td><span class="tag tag-success">Approved</span></td>
+                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                    </tr>
+                    <tr>
+                      <td>219</td>
+                      <td>Alexander Pierce</td>
+                      <td>11-7-2014</td>
+                      <td><span class="tag tag-warning">Pending</span></td>
+                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                    </tr>
+                    <tr>
+                      <td>657</td>
+                      <td>Bob Doe</td>
+                      <td>11-7-2014</td>
+                      <td><span class="tag tag-primary">Approved</span></td>
+                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                    </tr>
+                    <tr>
+                      <td>175</td>
+                      <td>Mike Doe</td>
+                      <td>11-7-2014</td>
+                      <td><span class="tag tag-danger">Denied</span></td>
+                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
             </div>
-            <!-- /.card-body -->
+            <!-- /.card -->
           </div>
-          <!-- /.card -->
         </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
+        <!-- /.row -->
+
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
 
 @endsection
+
+  {{-- <thead>
+                  <tr>
+                  <th>رقم الطلب</th>
+                  <th>تاريخ ووقت الطلب</th>
+                  <th>النوع</th>
+                  <th>المرسل</th>
+                  <th>المستلم</th>
+                  <th>الجهة</th>
+                  <th>الحالة</th>
+                  <th>الإجراءات</th>
+                  <th>العرض</th>
+                  <th>تتبع</th>
+                  <th>تأجيل</th>
+                  <th>تحويل</th>
+                  <th>إستلام فردي</th>
+                  <th>ملاحظات</th>
+                  <th>إلغاء</th>
+                  </tr>
+                </thead> --}}

@@ -54,7 +54,7 @@
           </li> --}}
           <li class="nav-item">
             <a href="{{route('country.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fa fa-cube"></i>
               <p>
                 الدول
                 <span class="right badge badge-danger">New</span>
@@ -63,7 +63,7 @@
           </li>
           <li class="nav-item">
             <a href="{{route('city.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fa fa-database"></i>
               <p>
                 المدن 
                 <span class="right badge badge-danger">New</span>
@@ -72,7 +72,7 @@
           </li>
           <li class="nav-item">
             <a href="{{route('area.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fa fa-desktop"></i>
               <p>
                 المناطق
                 <span class="right badge badge-danger">New</span>
@@ -81,7 +81,7 @@
           </li>
           <li class="nav-item">
             <a href="{{route('service.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fa fa-lightbulb"></i>
               <p>
                 الخدمات
                 <span class="right badge badge-danger">New</span>
@@ -89,7 +89,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('order.create')}}" class="nav-link">
+            <a href="{{route('order.index')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                الطلبات 
@@ -97,29 +97,74 @@
               </p>
             </a>
           </li>
-
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
+         <li class="nav-item">
+            <a href="" class="nav-link">
+              <i class="nav-icon fa fa-id-card"></i>
               <p>
-                Layout Options
+               التقارير 
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="" class="nav-link">
+              <i class="nav-icon fa fa-lock"></i>
+              <p>
+               إدارة المستخدمين            
                 <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">6</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="pages/layout/top-nav.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Top Navigation</p>
+                  <p>المستخدمين</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="pages/layout/boxed.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Boxed</p>
+                  <p>الصلاحيات</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="pages/layout/boxed.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>الرولز</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+            <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-envelope"></i>
+              <p>
+                Mailbox
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/mailbox/mailbox.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Inbox</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/mailbox/compose.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Compose</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/mailbox/read-mail.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Read</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+ 
          {{--      <li class="nav-item">
                 <a href="pages/layout/fixed-sidebar.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>

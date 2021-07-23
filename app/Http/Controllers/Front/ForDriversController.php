@@ -14,7 +14,7 @@ class ForDriversController extends Controller
      */
     public function index()
     {
-        //
+         return view('front.for_drivers');
     }
 
     /**

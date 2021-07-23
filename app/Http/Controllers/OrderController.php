@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Country;
+use App\Models\City;
+use App\Models\Area;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -13,8 +16,11 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('admin.orders.index');
+    {  
+        //$orders = Order::all();
+        return view('admin.orders.index',[
+           // $orders => $orders
+        ]);
     }
 
     /**
@@ -23,8 +29,13 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('admin.orders.create');
+    {   
+        $countries = Country::all()->pluck('name', 'id');
+        $cities = City::all()->pluck('name', 'id');
+        return view('admin.orders.create',[
+          'countries' => $countries,
+          'cities' => $cities
+        ]);
     }
 
     /**
@@ -35,7 +46,11 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       //dd($request->all());
+        $order = Order::create( $request->all() );
+
+        return redirect()->route('order.index')
+        ->with('success', "order ($order->name) created.");
     }
 
     /**

@@ -14,7 +14,7 @@ class TrackPackageController extends Controller
      */
     public function index()
     {
-        //
+         return view('front.track_package');
     }
 
     /**

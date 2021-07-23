@@ -11,7 +11,8 @@
 @endsection
 
 @section('content')
-    
+        @include('shared.msg')
+
           <div class="card">
             <div class="card-header">
                <a type="button" class="btn btn-primary" href="{{ route('city.create') }}">إضافة <i class="fa fa-plus"></i> </a>
@@ -45,9 +46,9 @@
                               @endif
                           </td>
                         	<td>   
-                              <a href="" class="btn btn-primary btn-sm"><i class='fa fa-edit'></i></a>
-                              <a href="" class="btn btn-success btn-sm"><i class='fa fa-eye'></i></a>
-                              <a href="" onclick='return confirm("Are you sure dude?")' class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></a>
+                              <a href="{{route('city.edit' , $city->id )}}" class="btn btn-primary btn-sm"><i class='fa fa-edit'></i></a>
+                              {{-- <a href="{{route('city.destroy' , $city->id )}}" class="btn btn-success btn-sm"><i class='fa fa-eye'></i></a> --}}
+                              <a href="{{route('city.delete' , $city->id )}}" onclick='return confirm("Are you sure dude?")' class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></a>
                         </td>
                     </tr>
                   @endforeach

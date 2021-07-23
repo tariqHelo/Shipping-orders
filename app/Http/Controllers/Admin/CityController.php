@@ -28,9 +28,9 @@ class CityController extends Controller
      */
     public function create()
     {   
-        $city = City::all();;
+       // $city = City::all();;
         return view('admin.city.create',[
-            'city'=> $city,
+            'city' => new City(),
         ]);
         
     }
@@ -66,9 +66,12 @@ class CityController extends Controller
      * @param  \App\Models\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function edit(City $city)
-    {
-        //
+    public function edit($id)
+    {     
+           $city = City::findOrFail($id);;
+           return view('admin.city.edit')
+           ->withCity($city);
+           
     }
 
     /**
@@ -78,9 +81,14 @@ class CityController extends Controller
      * @param  \App\Models\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function update(CityRequest $request, City $city)
+    public function update(CityRequest $request, $id)
     {
-        //
+       $city = City::findOrFail($id);
+        //$request->validate( Product::validateRules() );
+
+        $city->update( $request->all() );
+        session()->flash('msg', "s:updated ($city->name) successfully ");
+        return redirect()->route('city.index');
     }
 
     /**
@@ -89,8 +97,12 @@ class CityController extends Controller
      * @param  \App\Models\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function destroy(City $city)
+    public function destroy($id)
     {
-        //
+      $city = City::findOrFail($id);
+      $city->delete();
+      session()->flash("msg", "e: Deleted ($city->name) Successfully");
+      return redirect()->route('city.index');
+
     }
 }
