@@ -106,7 +106,25 @@
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview">
+             <li class="nav-item">
+                <a href="{{route('users.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>المستخدمين</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('permissions.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>الصلاحيات</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('roles.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>الرولز</p>
+                </a>
+              </li>
+          {{-- <li class="nav-item has-treeview">
             <a href="" class="nav-link">
               <i class="nav-icon fa fa-lock"></i>
               <p>
@@ -163,7 +181,7 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> --}}
  
          {{--      <li class="nav-item">
                 <a href="pages/layout/fixed-sidebar.html" class="nav-link">

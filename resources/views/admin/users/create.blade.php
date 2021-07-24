@@ -1,81 +1,102 @@
-@extends('admin.app')
+@extends('layouts.admin')
+@section('title', '')
+
 @section('content')
 @include('shared.msg')
-
-<div class="card">
-    <div class="card-header">
-        {{ trans('global.create') }} {{ trans('cruds.user.title_singular') }}
-    </div>
-
-    <div class="card-body">
-        <form method="POST" action="{{ route("users.store") }}" enctype="multipart/form-data">
-            @csrf
-            <div class="form-group">
-                <label class="required" for="name">الإسم</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
-                @if($errors->has('name'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('name') }}
+            <!-- Horizontal Form -->
+            <div class="card card-info">
+              <div class="card-header">
+                <h5 class="card-title-rtl">إضافة مستخدم جديد</h5>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form class="form-horizontal">
+                <div class="card-body">
+                 <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 control-label">الإسم</label>
+                    <div class="col-sm-10">
+                      <input type="email" name="name" class="form-control" id="inputEmail3" placeholder="Email">
                     </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.user.fields.name_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="email">الإيميل</label>
-                <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" id="email" value="{{ old('email') }}" required>
-                @if($errors->has('email'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('email') }}
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 control-label">الإيميل</label>
+                    <div class="col-sm-10">
+                      <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email">
                     </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.user.fields.email_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="password">كلمة السر</label>
-                <input class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" type="password" name="password" id="password" required>
-                @if($errors->has('password'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('password') }}
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 control-label">كلمة المرور</label>
+                    <div class="col-sm-10">
+                      <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password">
                     </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.user.fields.password_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="roles">{{ trans('cruds.user.fields.roles') }}</label>
-                <div style="padding-bottom: 4px">
-                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 control-label">الرولز</label>
+                    <div class="col-sm-10">
+                     <select class="form-control select2" name="roles[]" id="roles" multiple required>
+                         @foreach($roles as $id => $roles)
+                          <option value="{{ $id }}" {{ in_array($id, old('roles', [])) ? 'selected' : '' }}>{{ $roles }}</option>
+                        @endforeach
+                    </select>   
+                    </div>
+                  </div>
+                 
                 </div>
-                <select class="form-control select2 {{ $errors->has('roles') ? 'is-invalid' : '' }}" name="roles[]" id="roles" multiple required>
-                    @foreach($roles as $id => $roles)
-                        <option value="{{ $id }}" {{ in_array($id, old('roles', [])) ? 'selected' : '' }}>{{ $roles }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('roles'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('roles') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.user.fields.roles_helper') }}</span>
-            </div>
-            {{-- <div class="form-group">
-                <button class="btn btn-danger" type="submit">
-                    {{ trans('global.save') }}
-                </button>
-             <a href="{{route('users.index')}}" type="button" class="btn default">إلغاء</a>
-
-            </div> --}}
-
-            <div class="form-group">
-                    <button type="button" class="btn green">
-                        <i class="fa fa-check"></i> Save changes</button>
-                    <a href="{{route('users.index')}}" type="button" class="btn grey-salsa btn-outline" data-dismiss="modal">Close</a>
-
+                <!-- /.card-body -->
+                <div class="card-footer">
+                   <button type="submit" class="btn btn-primary">إضافة</button>
+                    <a href="{{route('users.index')}}" class="btn btn-danger" type="button"> إلغاء</a>
                 </div>
-        </form>
-    </div>
-</div>
+                <!-- /.card-footer -->
+              </form>
+            </div>
+            <!-- /.card -->
 
-
-
+          </div>
 @endsection
+
+
+
+
+
+
+
+
+  {{-- <form class="form-horizontal">
+                <div class="card-body">
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 control-label">الإسم </label>
+                    <div class="col-sm-10">
+                      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 control-label">الإيميل </label>
+                    <div class="col-sm-10">
+                      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 control-label">كلمة المرور</label>
+                    <div class="col-sm-10">
+                      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 control-label">كلمة المرور</label>
+                    <div class="col-sm-10">
+                 <div class="row">
+                    <div class="col-sm-6">
+                      <!-- select -->
+                      <div class="form-group">
+                        <select class="form-control">
+                          <option>option 1</option>
+                          <option>option 2</option>
+                          <option>option 3</option>
+                          <option>option 4</option>
+                          <option>option 5</option>
+                        </select>
+                      </div>
+                    </div>                  
+                  </div>
+              </div> --}}

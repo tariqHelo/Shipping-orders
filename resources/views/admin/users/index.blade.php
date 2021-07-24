@@ -1,28 +1,34 @@
-@extends('admin.app')
+@extends('layouts.admin')
+@section('title', 'جميع المستخدمين')
+
 @section('content')
 @include('shared.msg')
-
-    @can('user_create')
-        <div style="margin-bottom: 10px;" class="row">
-            <div class="col-lg-12">
-                <a class="btn btn-success" href="{{ route("users.create") }}">
-                    {{ trans('global.add') }} {{ trans('cruds.user.title_singular') }}
-                </a>
+    <div class="row">
+          <div class="col-12">
+            <div class="card">
+            <div class="card-header">
+               <a type="button" class="btn btn-success" href="{{ route('users.create') }}">إضافة مستخدم  <i class="fa fa-plus"></i> </a>
             </div>
-        </div>
-    @endcan
-<div class="card">
-    <div class="card-header">
-        {{ trans('cruds.user.title_singular') }} {{ trans('global.list') }}
-    </div>
+              <div class="card-header">
+                <h3 class="card-title"></h3>
 
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-User">
-                <thead>
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover">
+                  <thead>
                     <tr>
-                        <th>
-                            {{ trans('cruds.user.fields.id') }}
+                       <th>
+                           #
                         </th>
                         <th>
                             الإسم
@@ -31,31 +37,24 @@
                             الإيميل
                         </th>
                         <th>
-                            المتجر
-                        </th>
-                    
-                        <th>
                           الرولز
                         </th>
                         <th>
                             &nbsp;
                         </th>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach($users as $key => $user)
+                  </thead>
+                  <tbody>
+                     @foreach($users as $key => $user)
                         <tr data-entry-id="{{ $user->id }}">
-                            <td>
+                            <th>
                                 {{ $user->id ?? '' }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $user->name ?? '' }}
                             </td>
                             <td>
                                 {{ $user->email ?? '' }}
-                            </td>
-                            <td>
-                                {{ $user->store ?? '' }}
                             </td>
                             <td>
                                 @foreach($user->roles as $key => $item)
@@ -87,10 +86,14 @@
 
                         </tr>
                     @endforeach
-                </tbody>
-            </table>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
         </div>
-    </div>
 </div>
 
 

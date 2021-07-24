@@ -1,74 +1,82 @@
-@extends('admin.app')
+@extends('layouts.admin')
+@section('title', 'جميع الرولز')
+
 @section('content')
 @include('shared.msg')
 
-    @can('role_create')
-        <div style="margin-bottom: 10px;" class="row">
-            <div class="col-lg-12">
-                <a class="btn btn-success" href="{{ route("roles.create") }}">
-                    {{ trans('global.add') }} {{ trans('cruds.role.title_singular') }}
-                </a>
+    <div class="row">
+          <div class="col-12">
+            <div class="card">
+            <div class="card-header">
+               <a type="button" class="btn btn-success" href="{{ route('roles.create') }}">إضافة رولز  <i class="fa fa-plus"></i> </a>
             </div>
-        </div>
-    @endcan
-<div class="card">
-    <div class="card-header">
-        {{ trans('cruds.role.title_singular') }} {{ trans('global.list') }}
-    </div>
+              <div class="card-header">
+                <h3 class="card-title"></h3>
 
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-Role">
-                <thead>
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover">
+                  <thead>
                     <tr>
-                        <th width="10">
+                       <th>
+                           #
                         </th>
                         <th>
-                            {{ trans('cruds.role.fields.id') }}
+                            الإسم
                         </th>
                         <th>
-                            {{ trans('cruds.role.fields.title') }}
+                            الإيميل
                         </th>
                         <th>
-                            {{ trans('cruds.role.fields.permissions') }}
+                          الرولز
                         </th>
                         <th>
-                           Action
+                            &nbsp;
                         </th>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach($roles as $key => $role)
-                        <tr data-entry-id="{{ $role->id }}">
+                  </thead>
+                  <tbody>
+                     @foreach($users as $key => $user)
+                        <tr data-entry-id="{{ $user->id }}">
+                            <th>
+                                {{ $user->id ?? '' }}
+                            </th>
                             <td>
-
+                                {{ $user->name ?? '' }}
                             </td>
                             <td>
-                                {{ $role->id ?? '' }}
+                                {{ $user->email ?? '' }}
                             </td>
                             <td>
-                                {{ $role->title ?? '' }}
-                            </td>
-                            <td>
-                                @foreach($role->permissions as $key => $item)
+                                @foreach($user->roles as $key => $item)
                                     <span class="badge badge-info">{{ $item->title }}</span>
                                 @endforeach
                             </td>
                             <td>
-                                @can('role_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('roles.show', $role->id) }}">
+                                @can('user_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('users.show', $user->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
-                                @can('role_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('roles.edit', $role->id) }}">
+                                @can('user_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('users.edit', $user->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
 
-                                @can('role_delete')
-                                    <form action="{{ route('roles.destroy', $role->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                @can('user_delete')
+                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -79,13 +87,18 @@
 
                         </tr>
                     @endforeach
-                </tbody>
-            </table>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
         </div>
-    </div>
 </div>
 
 
 
 @endsection
+
 
