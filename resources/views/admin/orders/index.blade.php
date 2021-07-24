@@ -16,6 +16,9 @@
       <div class="row">
           <div class="col-12">
             <div class="card">
+               <div class="card-header">
+               <a type="button" class="btn btn-primary" href="{{ route('order.create') }}">إضافة <i class="fa fa-plus"></i> </a>
+            </div>
               <div class="card-header">
                 <h3 class="card-title">جميع الطلبات </h3>
 
@@ -36,8 +39,8 @@
                     <tr>
                     
                   <th width="10%">رقم الطلب</th>
-                  <th width="10%">التاريخ </th>
                   <th width="15%">التاريخ</th>
+                    <th width="10%">النوع </th>
                   <th>المرسل</th>
                   <th>المستلم</th>
                   <th>الجهة</th>
@@ -53,34 +56,21 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>183</td>
-                      <td>John Doe</td>
-                      <td>11-7-2014</td>
-                      <td><span class="tag tag-success">Approved</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
-                    <tr>
-                      <td>219</td>
-                      <td>Alexander Pierce</td>
-                      <td>11-7-2014</td>
-                      <td><span class="tag tag-warning">Pending</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
-                    <tr>
-                      <td>657</td>
-                      <td>Bob Doe</td>
-                      <td>11-7-2014</td>
-                      <td><span class="tag tag-primary">Approved</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
-                    <tr>
-                      <td>175</td>
-                      <td>Mike Doe</td>
-                      <td>11-7-2014</td>
-                      <td><span class="tag tag-danger">Denied</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
+                    @foreach ($orders as $order)
+                     <tr>
+                      <td>{{$order->id}}</td>
+                      <td>{{$order->received_date}}</td>
+                      <td>{{$order->service_id}}</td>
+                      <td>{{$order->sender}}</td>
+                      <td>{{$order->recipient_name}}</td>
+                      <td>{{$order->received_date}}</td>
+                      <td>{{$order->service_id}}</td>
+                      <td>{{$order->sender}}</td>
+                      <td>{{$order->recipient_name}}</td>
+                    </tr> 
+                    @endforeach
+                    
+                  
                   </tbody>
                 </table>
               </div>

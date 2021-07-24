@@ -21,8 +21,21 @@ class CountryFactory extends Factory
      */
     public function definition()
     {
+         $countries = Country::inRandomOrder()
+         ->limit(1)
+         ->first(['id']);
+
+        $status = ['active', 'draft' , 'hidden'];
+
+        $name = $this->faker->name();
+         
         return [
-            //
+            
+            'english_name' => $faker->randomElement(['England','Wales','Scotland','Northern Ireland','Southern
+            Ireland','United Kingdom']),
+            'country_code' => 'GB',
+            'town' => $faker->boolean(50) ? $faker->city() : null,
+
         ];
     }
 }

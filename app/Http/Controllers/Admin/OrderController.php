@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 
 use App\Models\Order;
 use App\Models\Country;
 use App\Models\City;
 use App\Models\Area;
+use App\Models\Service;
+
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -17,9 +20,9 @@ class OrderController extends Controller
      */
     public function index()
     {  
-        //$orders = Order::all();
+        $orders = Order::all();
         return view('admin.orders.index',[
-           // $orders => $orders
+            'orders' => $orders
         ]);
     }
 
@@ -30,11 +33,17 @@ class OrderController extends Controller
      */
     public function create()
     {   
-        $countries = Country::all()->pluck('name', 'id');
-        $cities = City::all()->pluck('name', 'id');
+        $countries = Country::all();
+       // dd($countries);
+        $cities = City::all();
+        $areas = Area::all();
+        $services = Service::all();
         return view('admin.orders.create',[
           'countries' => $countries,
-          'cities' => $cities
+          'country' => new Country(),
+          'cities' => $cities,
+          'areas' => $areas,
+          'services' => $services
         ]);
     }
 
@@ -46,7 +55,8 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-       //dd($request->all());
+      // dd($request->all());
+
         $order = Order::create( $request->all() );
 
         return redirect()->route('order.index')

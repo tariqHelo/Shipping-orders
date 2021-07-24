@@ -33,9 +33,9 @@
               <!-- form start -->
               <form role="form" action="{{route('order.store')}}" method="POST">
                 @csrf
-               @include('admin.orders._form',[
-                 'button' => "إضافة"
-               ])
+                @include('admin.orders._form',[
+                  'button' => "إضافة"
+                ])
               </form>
             </div>
             <!-- /.card -->

@@ -56,8 +56,8 @@
                             <div class="form-group">
                               <label>الدولة</label>
                               <select class="form-control" name="country_id">
-                                  @foreach ($countries as $country)
-                                    <option value="1">option 1</option>
+                                   @foreach ($countries as $country)
+                                     <option value="{{ $country->id }}" @if($country->id == old('country_id', $country->country_id)) selected @endif>{{ $country->name }}</option>
                                   @endforeach
                               </select>
                           </div>
@@ -66,11 +66,9 @@
                             <div class="form-group">
                               <label>المدينة</label>
                               <select class="form-control" name="city_id">
-                                <option>option 1</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                                <option>option 5</option>
+                                  @foreach ($cities as $city)
+                                     <option value="{{ $city->id }}" @if($city->id == old('city_id', $city->city_id)) selected @endif>{{ $city->name }}</option>
+                                  @endforeach
                               </select>
                           </div>
                         </div>
@@ -78,11 +76,9 @@
                             <div class="form-group">
                               <label>المنطقة</label>
                               <select class="form-control" name="area_id">
-                                <option>option 1</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                                <option>option 5</option>
+                                  @foreach ($areas as $area)
+                                     <option value="{{ $area->id }}" @if($area->id == old('area_id', $area->area_id)) selected @endif>{{ $area->name }}</option>
+                                  @endforeach
                               </select>
                           </div>
                         </div>
@@ -109,12 +105,10 @@
                     </div>
                     <div class="form-group">
                       <label>نوع الخدمة</label>
-                      <select class="form-control" name="type">
-                        <option>option 1</option>
-                        <option>option 2</option>
-                        <option>option 3</option>
-                        <option>option 4</option>
-                        <option>option 5</option>
+                      <select class="form-control" name="service_id">
+                        @foreach ($services as $service)
+                            <option value="{{ $service->id }}" @if($service->id == old('type', $service->type)) selected @endif>{{ $service->name }}</option>
+                        @endforeach
                       </select>
                     </div>
                      <div class="form-group">
@@ -128,11 +122,9 @@
                     <div class="form-group">
                       <label>مبلغ الشحن على </label>
                       <select class="form-control" name="shipping_amount">
-                        <option>option 1</option>
-                        <option>option 2</option>
-                        <option>option 3</option>
-                        <option>option 4</option>
-                        <option>option 5</option>
+                        <option value="receiver">receiver</option>
+                        <option value="sender">sender</option>
+                       
                       </select>
                     </div>
                     <div class="form-group">

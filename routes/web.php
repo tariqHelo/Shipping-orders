@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin\AreaController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ReportController;
 
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\Admin\OrderController;
 
 
 

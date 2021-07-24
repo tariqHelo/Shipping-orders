@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', ' إضافة منطقة')
+@section('title', ' إضافة مدينة')
 
 
 @section('breadcrumb')
@@ -10,9 +10,20 @@
 </ol>
 @endsection
 
+
+
 @section('content')
- <!-- left column -->
+    <!-- left column -->
           <div class="col-md-12">
+             @if ($errors->any())
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach($errors->all() as $message)
+                      <li>{{ $message }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+            @endif
             <!-- general form elements -->
             <div class="card card-success">
               <div class="card-header">
@@ -20,61 +31,13 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-               <form role="form" action="{{route('area.store')}}" method="POST">
-               
-                  <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                              <label>الدولة</label>
-                              <select class="form-control">
-                                <option>option 1</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                                <option>option 5</option>
-                              </select>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                              <label>المدينة</label>
-                              <select class="form-control">
-                                <option>option 1</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                                <option>option 5</option>
-                              </select>
-                          </div>
-                        </div>
-                    </div>
-
-                      <table class="table table-striped table-bordered table-hover" >
-                            <thead>
-                            <tr role="row" class="heading">
-                              @foreach ($services as $service )
-                                <th width="10%">
-                                  {{$service->name}}
-                                </th>
-                              @endforeach
-                            </tr>
-                      
-                            </thead>
-                            <tbody>
-                            </tbody>
-                      </table>
-                  <!-- /.card-body -->
-                   </div> 
-                  <div class="card-footer">
-                    <button type="button" class="btn btn-primary add-new-row" data-index="0">Add new</button>
-                  </div>
-            </form>
+              <form  action="{{route('area.store')}}" method="POST">
+                @csrf
+                 @include('admin.area._form', [
+                    'button' => 'إضافة'
+                ])
+              </form>
             </div>
             <!-- /.card -->
          </div>
 @endsection
-
-
-
-
