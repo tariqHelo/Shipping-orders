@@ -12,13 +12,13 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="HomeSite/Index-2.html">الرئيسية</a></li>
-                    <li><a href="HomeSite/for_business.html">حساب جديد</a></li>
-                    <li><a href="{{route('for_business.index')}}">ماذا يجب أن تعرف</a></li>
+                    <li><a href="{{url('/')}}">الرئيسية</a></li>
+                    <li><a href="{{route('for_business.index')}}">حساب جديد</a></li>
+                    <li><a href="{{route('for_drivers.index')}}">ماذا يجب أن تعرف</a></li>
                     <li><a href="{{route('TrackPackage.index')}}">تتبع شحنتك</a></li>
                     <li><a href="{{route('about.index')}}">من نحن</a></li>
                     <li><a href="{{route('Contact_Us.index')}}">تواصل معنا</a></li>
-                    <li><a href="https://admin.ساير للشحن.com/Accountsite/login">تسجيل الدخول</a></li>
+                    <li><a href="{{route('user_login.index')}}">تسجيل الدخول</a></li>
                     <li><a href="index.html?culture=en-us" id="arabic">English</a></li>
                     <li class="no_border vision-logo">
                         <a href="javascript:void()">

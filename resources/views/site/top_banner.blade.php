@@ -2,7 +2,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <h2 class="banner-title">عن الموقع</h2>
+                    <h2 class="banner-title">{{$text}}</h2>
                 </div><!-- END COL -->
                 <div class="col-md-8">
                     <ol class="breadcrumb">

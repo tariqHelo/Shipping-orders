@@ -1,6 +1,5 @@
-<footer id="footer">
+ <footer id="footer">
       
-
         <div class="footer-bottom">
             <div class="container">
                 <div class="row">
@@ -8,6 +7,7 @@
                         <p>   صمم  بسعاده من قبل 😉 </i>  ساير للشحن  </p>
                     </div>
                     <div class="col-sm-6 col-md-6">
+
                         <ul class="social-links">
                             <li>تابعنا :</li>
                             <li><a href="#"><i class="icofont icofont-social-facebook"></i></a></li>

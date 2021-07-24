@@ -20,6 +20,7 @@ use App\Http\Controllers\Front\ForDriversController;
 use App\Http\Controllers\Front\TrackPackageController;
 use App\Http\Controllers\Front\AboutUsController;
 use App\Http\Controllers\Front\ContactUsController;
+use App\Http\Controllers\Front\UserLoginController;
 
 
 /*
@@ -32,6 +33,12 @@ use App\Http\Controllers\Front\ContactUsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+require __DIR__.'/auth.php';
+
+
+Route::get('/', function () {
+return view('layouts.front');
+});
 
 /*Start FrontEnd Page */
 Route::resource('/for_business', ForBusinessController::class);
@@ -39,21 +46,17 @@ Route::resource('/for_drivers', ForDriversController::class);
 Route::resource('/TrackPackage', TrackPackageController::class);
 Route::resource('/about', AboutUsController::class);
 Route::resource('/Contact_Us', ContactUsController::class);
+Route::resource('/user_login', UserLoginController::class);
+
 /* End Route FrontEnd Page */
 
-Route::get('/', function () {
-return view('layouts.admin');
-});
+
+
+
 
 Route::get('/dashboard', function () {
-return view('dashboard');
+return view('layouts.admin');
 })->middleware(['auth'])->name('dashboard');
-
-require __DIR__.'/auth.php';
-
-
-
-
 
 /* Start Admin Route */
 // Permissions
@@ -63,9 +66,6 @@ Route::resource('roles', RolesController::class);
 // Users
 Route::resource('users', UsersController::class);
 /* End Admin Route */
-
-
-
 
 Route::resource('/country', CountryController::class);
 Route::get('/country/delete/{id}', [CountryController::class , 'destroy'])->name('country.delete');
