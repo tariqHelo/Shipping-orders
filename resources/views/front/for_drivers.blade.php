@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title">
-                        <img src="{{ asset('assets/admin/images/icon_for_drivers.svg')}}" />
+                        <img src="{{ asset('assets/front/images/icon_for_drivers.svg')}}" />
                         
                     </div>
                 </div><!-- END COL -->

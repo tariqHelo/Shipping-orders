@@ -27,6 +27,7 @@ class ServiceRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'english_name' => 'required|max:255',
+            'type' => 'required:' . Service::STATUS_LOCAL . ',' . Service::STATUS_INTERNATIONAL ,
             'status' => 'required:' . Service::STATUS_ACTIVE . ',' . Service::STATUS_HIDDEN .',' .
             Service::STATUS_DRAFT,
         ];

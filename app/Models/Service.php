@@ -12,6 +12,9 @@ class Service extends Model
      const STATUS_ACTIVE = 'active';
      const STATUS_DRAFT = 'draft';
      const STATUS_HIDDEN = 'hidden';
+     
+    const STATUS_LOCAL = 'local';
+    const STATUS_INTERNATIONAL = 'international';
 
      protected $fillable = [
      'name', 'english_name','type', 'status'

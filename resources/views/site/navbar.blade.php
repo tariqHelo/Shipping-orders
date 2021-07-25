@@ -8,7 +8,7 @@
                     <span class="icon-bar middle-bar"></span>
                     <span class="icon-bar bottom-bar"></span>
                 </button>
-                <a class="navbar-brand sayer_logo" href="HomeSite/index.html"></a>
+                <a class="navbar-brand sayer_logo" href="{{url('/')}}"></a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">

@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title">
-                        <img src="{{ asset('assets/admin/images/icon_for_business.svg')}}" />
+                        <img src="{{ asset('assets/front/images/icon_for_business.svg')}}" />
                         
                     </div>
                 </div><!-- END COL -->
@@ -18,7 +18,7 @@
                 <div class="col-md-12">
                     <div class="app-download-content">
                         <!-- START APP STORE -->
-                        <a href="https://admin.ساير للشحن.com//AccountSite/Login" class="download-btn">
+                        <a href="{{url('dashboard')}}" class="download-btn">
                             <i class="bq_icon_login"></i>
                             <span>
                                 مسجل بالفعل?

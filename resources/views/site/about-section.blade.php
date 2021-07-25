@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-7">
                     <div class="app-about-text">
-                        <img src="{{ asset('assets/admin/images/sayer_logo.png')}}" class="app-about_logo" />
+                        <img src="{{ asset('assets/front/images/sayer_logo.png')}}" class="app-about_logo" />
                         <h3>المشاريع</h3>
                         <h5 class="mb20">
                             للشركات من جميع الأنواع والأحجام
@@ -16,7 +16,7 @@
                 </div><!-- END COL -->
 
                 <div class="col-md-5">
-                    <img src="{{ asset('assets/admin/images/desktop_mob.jpg')}}" class="img-responsive">
+                    <img src="{{ asset('assets/front/images/desktop_mob.jpg')}}" class="img-responsive">
                 </div><!-- END COL -->
             </div><!-- END ROW -->
 
