@@ -15,7 +15,7 @@
                      <form class="register-form" method="POST" action="{{ route('register') }}">
                 @csrf
                 <div class="form-group">
-                    <label class="control-label visible-ie8 visible-ie9">إسم المستخدم</label>
+                    <label class="control-label visible-ie8 visible-ie9">إسم التاجر</label>
                     <input class="form-control placeholder-no-fix" name="name" type="text" placeholder="إسم المستخدم"  />
                  </div>
                  <div class="form-group">
@@ -27,6 +27,36 @@
                     <input class="form-control placeholder-no-fix"  name="store" type="text" placeholder="المتجر" />
                 </div>
                 <div class="form-group">
+                    <label class="control-label visible-ie8 visible-ie9">الدولة</label>
+                    <select class="form-control">
+                          <option>option 1</option>
+                          <option>option 2</option>
+                          <option>option 3</option>
+                          <option>option 4</option>
+                          <option>option 5</option>
+                        </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label visible-ie8 visible-ie9">المدينة</label>
+                    <select class="form-control">
+                          <option>option 1</option>
+                          <option>option 2</option>
+                          <option>option 3</option>
+                          <option>option 4</option>
+                          <option>option 5</option>
+                        </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label visible-ie8 visible-ie9">المنطقة</label>
+                    <select class="form-control">
+                          <option>option 1</option>
+                          <option>option 2</option>
+                          <option>option 3</option>
+                          <option>option 4</option>
+                          <option>option 5</option>
+                        </select>
+                </div>
+                <div class="form-group">
                     <label class="control-label visible-ie8 visible-ie9">الإيميل</label>
                     <input class="form-control placeholder-no-fix"  name="email"  type="text" placeholder="الإيميل"/>
                 </div>
@@ -35,20 +65,16 @@
                     <input class="form-control placeholder-no-fix"  name="store" type="text" placeholder="المتجر" />
                 </div>
                 <div class="form-group">
-                    <label class="control-label visible-ie8 visible-ie9">رقم الهاتف أخر</label>
+                    <label class="control-label visible-ie8 visible-ie9">رقم الهاتف الثاني</label>
                     <input class="form-control placeholder-no-fix"  name="email"  type="text" placeholder="الإيميل"/>
                 </div>
                 <div class="form-group">
-                    <label class="control-label visible-ie8 visible-ie9">إسم المستخدم</label>
+                    <label class="control-label visible-ie8 visible-ie9"> عمولة التعامل</label>
                     <input class="form-control placeholder-no-fix" name="name" type="text" placeholder="إسم المستخدم"  />
                  </div>
                 <div class="form-group">
-                    <label class="control-label visible-ie8 visible-ie9">إسم المتجر</label>
+                    <label class="control-label visible-ie8 visible-ie9"> طريقة إستلام المبالغ</label>
                     <input class="form-control placeholder-no-fix"  name="store" type="text" placeholder="المتجر" />
-                </div>
-                <div class="form-group">
-                    <label class="control-label visible-ie8 visible-ie9">الإيميل</label>
-                    <input class="form-control placeholder-no-fix"  name="email"  type="text" placeholder="الإيميل"/>
                 </div>
                 <div class="form-group">
                     <label class="control-label visible-ie8 visible-ie9">كلمة السر</label>

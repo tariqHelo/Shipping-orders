@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
-@section('title' , '')
+@section('title', ' إضافة مدينة')
+
 
 @section('breadcrumb')
 <ol class="breadcrumb float-sm-right">
@@ -9,10 +10,12 @@
 </ol>
 @endsection
 
+
+
 @section('content')
     <!-- left column -->
           <div class="col-md-12">
-              @if ($errors->any())
+             @if ($errors->any())
               <div class="alert alert-danger">
                   <ul>
                       @foreach($errors->all() as $message)
@@ -20,22 +23,19 @@
                       @endforeach
                   </ul>
               </div>
-              @endif
+            @endif
             <!-- general form elements -->
-            <div class="card card-primary">
+            <div class="card card-success">
               <div class="card-header">
-                <h3 class="card-title-rtl">إضافة دولة</h3>
+                <h3 class="card-title-rtl">إضافة مدينة</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-             <form role="form" action="{{route('area.update' , $area->id)}}" method="post">
+              <form  action="{{route('city.store')}}" method="POST">
                 @csrf
-                @method('PUT')
-                
-                 @include('admin.area._form', [
-                    'button' => 'تعديل'
+                 @include('admin.city._form', [
+                    'button' => 'إضافة'
                 ])
-
               </form>
             </div>
             <!-- /.card -->

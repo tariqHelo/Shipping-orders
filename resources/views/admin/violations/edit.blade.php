@@ -28,11 +28,11 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-             <form role="form" action="{{route('area.update' , $area->id)}}" method="post">
+             <form role="form" action="{{route('city.update' , $city->id)}}" method="post">
                 @csrf
                 @method('PUT')
                 
-                 @include('admin.area._form', [
+                 @include('admin.city._form', [
                     'button' => 'تعديل'
                 ])
 

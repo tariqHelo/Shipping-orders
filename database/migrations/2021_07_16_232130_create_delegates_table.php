@@ -15,9 +15,7 @@ class CreateDelegatesTable extends Migration
     {
         Schema::create('delegates', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->string('nationality');
-            $table->string('email');
             $table->string('image');
             $table->date('work_start');
             $table->string('license');
@@ -35,6 +33,9 @@ class CreateDelegatesTable extends Migration
             $table->string('receipt_ommission');
             $table->string('password');
             $table->enum('status' , ['active', 'draft' , 'hidden']);
+            $table->foreignId('user_id')->constrained();
+            $table->unsignedInteger('role_id');
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade')->default(2);
             $table->timestamps();
         });
     }

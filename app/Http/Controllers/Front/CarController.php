@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Front;
 
-use App\Models\Price;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Car;
+use Illuminate\Http\Request;
 
-class PriceController extends Controller
+class CarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class PriceController extends Controller
      */
     public function index()
     {
-       return view('admin.area_price.index');
+        //
     }
 
     /**
@@ -25,10 +25,7 @@ class PriceController extends Controller
      */
     public function create()
     {
-       $services = Service::all();
-       return view('admin.area_price.create',[
-       'services' => $services,
-       ]);
+        //
     }
 
     /**
@@ -45,10 +42,10 @@ class PriceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Price  $price
+     * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function show(Price $price)
+    public function show(Car $car)
     {
         //
     }
@@ -56,10 +53,10 @@ class PriceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Price  $price
+     * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function edit(Price $price)
+    public function edit(Car $car)
     {
         //
     }
@@ -68,10 +65,10 @@ class PriceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Price  $price
+     * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Price $price)
+    public function update(Request $request, Car $car)
     {
         //
     }
@@ -79,10 +76,10 @@ class PriceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Price  $price
+     * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Price $price)
+    public function destroy(Car $car)
     {
         //
     }

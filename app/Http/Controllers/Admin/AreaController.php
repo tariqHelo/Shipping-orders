@@ -29,9 +29,8 @@ class AreaController extends Controller
      */
     public function create()
     { 
-        $services = Service::all();
         return view('admin.area.create',[
-           'services' => $services,
+           'area' => new Area(),
         ]);
     }
 
@@ -43,10 +42,11 @@ class AreaController extends Controller
      */
     public function store(Request $request)
     {
-        $areas = Area::create( $request->all() );
+        $area = Area::create( $request->all() );
+        session()->flash('msg', "s:create ($area->name) successfully ");
+        return redirect()->route('area.index');
 
-        return redirect()->route('area.index')
-        ->with('success', "Product ($areas->name) created.");
+        
     }
 
     /**
@@ -66,9 +66,11 @@ class AreaController extends Controller
      * @param  \App\Models\Area  $area
      * @return \Illuminate\Http\Response
      */
-    public function edit(Area $area)
+    public function edit($id)
     {
-        
+         $area = Area::findOrFail($id);;
+         return view('admin.area.edit')
+         ->withArea($area);
     }
 
     /**
@@ -78,9 +80,12 @@ class AreaController extends Controller
      * @param  \App\Models\Area  $area
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Area $area)
+    public function update(Request $request, $id)
     {
-        //
+        $area = Area::findOrFail($id);
+        $area->update( $request->all() );
+        session()->flash('msg', "s:updated ($area->name) successfully ");
+        return redirect()->route('area.index');
     }
 
     /**

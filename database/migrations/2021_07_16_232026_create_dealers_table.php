@@ -15,9 +15,6 @@ class CreateDealersTable extends Migration
     {
         Schema::create('dealers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->string('phone1');
             $table->string('phone2');
             $table->string('logo');
             $table->foreignId('country_id')->constrained();
@@ -27,7 +24,9 @@ class CreateDealersTable extends Migration
             $table->string('commission');
             $table->enum('status' , ['active', 'draft' , 'hidden']);
             $table->string('password');
-    
+            $table->foreignId('user_id')->constrained();
+            $table->unsignedInteger('role_id');
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade')->default(2);
             $table->timestamps();
         });
     }

@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ReportController;
 
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\PriceController;
 
 
 
@@ -21,6 +22,7 @@ use App\Http\Controllers\Front\TrackPackageController;
 use App\Http\Controllers\Front\AboutUsController;
 use App\Http\Controllers\Front\ContactUsController;
 use App\Http\Controllers\Front\UserLoginController;
+use App\Http\Controllers\Front\ViolationController;
 
 
 /*
@@ -80,4 +82,7 @@ Route::resource('/area', AreaController::class);
 Route::resource('/service', ServiceController::class);
 
 Route::resource('/order', OrderController::class);
-Route::resource('/report', ReportController::class);
+Route::resource('/price', PriceController::class);
+
+Route::resource('/report', ReportController::class)->middleware(['auth']);
+Route::resource('/violation', ViolationController::class);

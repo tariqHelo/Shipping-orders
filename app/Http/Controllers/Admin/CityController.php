@@ -43,10 +43,9 @@ class CityController extends Controller
      */
     public function store(CityRequest $request)
     {
-          $cities = City::create( $request->all() );
-
-          return redirect()->route('city.index')
-          ->with('success', "Product ($cities->name) created.");
+          $city = City::create( $request->all() );
+          session()->flash('msg', "s:create ($city->name) successfully ");
+          return redirect()->route('city.index');
     }
 
     /**

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', ' إضافة منطقة')
+@section('title', '')
 
 
 @section('breadcrumb')
@@ -16,7 +16,7 @@
             <!-- general form elements -->
             <div class="card card-success">
               <div class="card-header">
-                <h3 class="card-title-rtl">إضافة مدينة</h3>
+                <h3 class="card-title-rtl">إضافة أسعار المناطق</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -52,14 +52,14 @@
 
                       <table class="table table-striped table-bordered table-hover" >
                             <thead>
-                            <tr role="row" class="heading">
+                            {{-- <tr role="row" class="heading">
                               @foreach ($services as $service )
                                 <th width="10%">
                                   {{$service->name}}
                                 </th>
                               @endforeach
                             </tr>
-                      
+                       --}}
                             </thead>
                             <tbody>
                             </tbody>
