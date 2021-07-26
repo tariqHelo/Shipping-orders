@@ -56,11 +56,9 @@ class OrderController extends Controller
     public function store(Request $request)
     {
       // dd($request->all());
-
         $order = Order::create( $request->all() );
-
-        return redirect()->route('order.index')
-        ->with('success', "order ($order->name) created.");
+        session()->flash('msg', "s:updated ($order->name) successfully ");
+        return redirect()->route('order.index');
     }
 
     /**
