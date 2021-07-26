@@ -70,7 +70,7 @@
 
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">تعديل</button>
-                  <a href="{{route('order.index')}}" class="btn btn-danger" type="button"> إلغاء</a>
+                  <a href="{{route('country.index')}}" class="btn btn-danger" type="button"> إلغاء</a>
                 </div>
               </form>
             </div>

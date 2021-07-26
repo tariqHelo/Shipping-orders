@@ -17,9 +17,7 @@ class CreateCountriesTable extends Migration
              $table->id();
              $table->string('name');
              $table->string('english_name');
-             $table->enum('status' , ['active', 'draft' , 'hidden']);
-             $table->foreignId("city_id")->nullable();
-             $table->foreign('city_id')->references('id')->on("cities")->cascadeOnDelete()->cascadeOnUpdate();
+             $table->enum('status' , ['active', 'draft' , 'hidden'])->default('draft');
              $table->timestamps();
         });
     }

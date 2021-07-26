@@ -3,7 +3,7 @@
                        
                   <div class="form-group">
                     <label for="exampleInputEmail1">إسم الخدمة </label>
-                    <input type="string" class="form-control @error('name') is-invalid @enderror" name="name"  placeholder="إسم البلد" value="{{ old('name', $service->english_name ) }}">
+                    <input type="string" class="form-control @error('name') is-invalid @enderror" name="name"  placeholder="إسم البلد" value="{{ old('name', $service->name ) }}">
                       @error('name')
                         <p class="text-danger">{{ $message }}</p>
                       @enderror

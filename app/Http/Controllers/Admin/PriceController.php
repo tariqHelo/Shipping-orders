@@ -3,6 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Price;
+use App\Models\Service;
+use App\Models\City;
+use App\Models\Area;
+
+use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,8 +19,13 @@ class PriceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-       return view('admin.area_price.index');
+    { 
+        $countries = Country::all();
+        $services = Service::all();
+       return view('admin.area_price.index' , [
+           'countries' => $countries ,
+            'services' =>$services
+        ]);
     }
 
     /**
@@ -25,9 +35,9 @@ class PriceController extends Controller
      */
     public function create()
     {
-       $services = Service::all();
-       return view('admin.area_price.create',[
-       'services' => $services,
+        $countries = Country::all();
+        return view('admin.area_price.create',[
+       'countries' => $countries,
        ]);
     }
 
@@ -85,5 +95,17 @@ class PriceController extends Controller
     public function destroy(Price $price)
     {
         //
+    }
+
+    public function get_cities(Request $request)
+    {
+        $cities = City::whereCountryId($request->country_id)->pluck('name' , 'id');
+         return response()->json($cities);
+    }
+
+    public function get_districts(Request $request)
+    {
+        $districts = Area::whereCityId($request->city_id)->pluck('name' , 'id');
+         return response()->json($districts); 
     }
 }

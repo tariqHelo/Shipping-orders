@@ -34,7 +34,7 @@ class CountryController extends Controller
      */
     public function create()
     {    
-        $cities = City::all()->pluck('name', 'id');
+        $cities = City::pluck('name', 'id');
         return view('admin.country.create',[
             'cities' => $cities
         ]);
@@ -48,10 +48,8 @@ class CountryController extends Controller
      */
     public function store(CountryRequest $request)
     {
-        // $request->validate(Product::validateRules());
-
-        $country = Country::create( $request->all() );
-        $country->cities()->sync($request->input('cities', []));
+        $country = Country::create($request->all());
+        $country->cities($request->input('city_id', []));
         session()->flash('msg', "s:create ($country->name) successfully ");
         return redirect(route('country.index'));
     }
@@ -68,7 +66,7 @@ class CountryController extends Controller
          //$cities = City::where('id', '=', $country->id)->get();
          $cities= $country->cities;
          return view('admin.country.show', [
-         'cities' => $cities,
+        'cities' => $cities,
          ]);
     }
 
@@ -79,10 +77,10 @@ class CountryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {   
         $country = Country::findOrFail($id);
-        $cities = City::all()->pluck('name', 'id');
-        $country->load('cities');
+        $cities = City::pluck('name', 'id');
+       // $country->load('cities');
         return view('admin.country.edit', [
             'country' => $country,
             'cities' => $cities,
@@ -97,9 +95,9 @@ class CountryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    { //dd(20);
+    {    //dd($request->all());
         $country = Country::findOrFail($id);
-        $country->cities()->sync($request->input('cities', []));
+       // $country->cities()->sync($request->input('cities', []));
         //$request->validate( Product::validateRules() );
 
         $country->update( $request->all() );

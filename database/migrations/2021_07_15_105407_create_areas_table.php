@@ -17,16 +17,9 @@ class CreateAreasTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('english_name');
-            $table->enum('status' , ['active', 'draft' , 'hidden']);
-            $table->integer('normal_shipping');
-            $table->integer('excellent_mail');
-            $table->integer('food_shipping');
-            $table->integer('special_shipping');
-            $table->integer('express_mail');
-            $table->integer('Shipping_out');
-            $table->integer('fast_shipping_out');
-            $table->integer('normal_shipping_outside');
-            $table->integer('Special_Premium_Mail_Shipping');
+            $table->enum('status' , ['active', 'draft' , 'hidden'])->default('draft');
+            $table->foreignId('country_id')->constrained()->onDelete('cascade');
+            $table->foreignId('city_id')->constrained()->onDelete('cascade');
             $table->timestamps();
             
         });

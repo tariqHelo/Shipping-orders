@@ -20,59 +20,153 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-               <form role="form" action="{{route('area.store')}}" method="POST">
-               
-                  <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                              <label>الدولة</label>
-                              <select class="form-control">
-                                <option>option 1</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                                <option>option 5</option>
+                <div class="card-body">
+                  <div class="row">
+                      <div class="col-4">
+                          <div class="form-group">
+                              <label for="country_id">Country</label>
+                              <select name="country_id" id="country_id" class="form-control">
+                                  <option value=""> --- </option>
+                                  @foreach($countries as $country)
+                                      <option value="{{ $country->id }}" {{ old('country_id') == $country->id ? 'selected' : '' }}>{{ $country->name }}</option>
+                                  @endforeach
                               </select>
+                              @error('country_id')<span class="text-danger">{{ $message }}</span>@enderror
                           </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                              <label>المدينة</label>
-                              <select class="form-control">
-                                <option>option 1</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                                <option>option 5</option>
+                      </div>
+                      <div class="col-4">
+                          <div class="form-group">
+                              <label for="city_id">City</label>
+                              <select name="city_id" id="city_id" class="form-control">
                               </select>
+                              @error('city_id')<span class="text-danger">{{ $message }}</span>@enderror
                           </div>
-                        </div>
-                    </div>
-
-                      <table class="table table-striped table-bordered table-hover" >
-                            <thead>
-                            {{-- <tr role="row" class="heading">
-                              @foreach ($services as $service )
-                                <th width="10%">
-                                  {{$service->name}}
-                                </th>
-                              @endforeach
-                            </tr>
-                       --}}
-                            </thead>
-                            <tbody>
-                            </tbody>
-                      </table>
-                  <!-- /.card-body -->
-                   </div> 
-                  <div class="card-footer">
-                    <button type="button" class="btn btn-primary add-new-row" data-index="0">Add new</button>
+                      </div>
+                      <div class="col-4">
+                          <div class="form-group">
+                              <label for="district_id">District</label>
+                              <select name="district_id" id="district_id" class="form-control">
+                              </select>
+                              @error('district_id')<span class="text-danger">{{ $message }}</span>@enderror
+                          </div>
+                      </div>
                   </div>
-            </form>
+                </div>
+                <table class="table table-striped table-bordered table-hover" id="datatable_ajax">
+								<thead>
+								<tr role="row" class="heading">
+									<th width="7%">
+										 Record&nbsp;#
+									</th>
+									<th width="5%">
+										 Date
+									</th>
+									<th width="5%">
+										 Customer
+									</th>
+									<th width="5%">
+										 Ship&nbsp;To
+									</th>
+									<th width="5%">
+										 Price
+									</th>
+									<th width="5%">
+										 Amount
+									</th>
+									<th width="5%">
+										 Status
+									</th>
+									<th width="5%">
+										 Actions
+									</th>
+								</tr>
+								<tr role="row" class="filter">
+									<td>
+										<input type="text" class="form-control form-filter input-sm" name="order_id">
+									</td>
+									<td>
+										<input type="text" class="form-control form-filter input-sm" name="order_id">
+									</td>
+                                    <td>
+										<input type="text" class="form-control form-filter input-sm" name="order_id">
+									</td>
+                                    <td>
+										<input type="text" class="form-control form-filter input-sm" name="order_id">
+									</td>
+                                    <td>
+										<input type="text" class="form-control form-filter input-sm" name="order_id">
+									</td>
+                                    <td>
+										<input type="text" class="form-control form-filter input-sm" name="order_id">
+									</td>
+                                    <td>
+										<input type="text" class="form-control form-filter input-sm" name="order_id">
+									</td>
+                                    <td>
+										<input type="text" class="form-control form-filter input-sm" name="order_id">
+									</td>
+								</tr>
+								</thead>
+								<tbody>
+								</tbody>
+								</table>
+                 <div class="card-footer">
+                    <button type="button" class="btn btn-primary add-new-row" data-index="0">حفظ</button>
+                  </div>
+
             </div>
+            
             <!-- /.card -->
          </div>
+@endsection
+@section('script')
+    <script>
+        $(function () {
+            populateCities();
+            populateDistricts();
+
+
+            $(document).on('change', '#country_id', function() {
+               populateCities();
+               populateDistricts();
+               return false;
+            });
+
+            $(document).on('change', '#city_id', function() {
+                populateDistricts();
+                return false;
+            });
+
+            function populateCities() {
+                $('option', $('#city_id')).remove();
+                $('#city_id').append($('<option></option>').val('').html(' --- '));
+
+                var countryIdVal = $('#country_id').val() != null ? $('#country_id').val() : '{{ old('country_id') }}';
+                $.get("{{ route('get_cities') }}", { country_id: countryIdVal }, function (data) {
+                    $.each(data, function(val, text) {
+                        var selectedVal = val == '{{ old('city_id') }}' ? "selected" : "";
+
+                        $('#city_id').append($('<option ' + selectedVal + '></option>').val(val).html(text));
+                    })
+                }, "json");
+            }
+
+
+            function populateDistricts() {
+                $('option', $('#district_id')).remove();
+                $('#district_id').append($('<option></option>').val('').html(' --- '));
+
+                var cityIdVal = $('#city_id').val() != null ? $('#city_id').val() : '{{ old('city_id') }}';
+                $.get("{{ route('get_districts') }}", { city_id: cityIdVal }, function (data) {
+                    $.each(data, function(val, text) {
+                        var selectedVal = val == '{{ old('district_id') }}' ? "selected" : "";
+                        $('#district_id').append($('<option ' + selectedVal + '></option>').val(val).html(text));
+                    })
+                }, "json");
+            }
+
+        });
+    </script>
 @endsection
 
 

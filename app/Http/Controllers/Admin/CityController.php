@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\City;
+use App\Models\Area;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CityRequest;
@@ -28,8 +30,9 @@ class CityController extends Controller
      */
     public function create()
     {   
-       // $city = City::all();;
+        $areas = Area::pluck('name', 'id');
         return view('admin.city.create',[
+            'areas' => $areas,
             'city' => new City(),
         ]);
         
@@ -44,6 +47,7 @@ class CityController extends Controller
     public function store(CityRequest $request)
     {
           $city = City::create( $request->all() );
+          $city->areas()->sync($request->input('areas', []));
           session()->flash('msg', "s:create ($city->name) successfully ");
           return redirect()->route('city.index');
     }
@@ -54,9 +58,14 @@ class CityController extends Controller
      * @param  \App\Models\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function show(City $city)
+    public function show($id)
     {
-        //
+        $city = City::findOrFail($id);
+        //$cities = City::where('id', '=', $country->id)->get();
+        $areas= $city->areas;
+        return view('admin.city.show', [
+        'areas' => $areas,
+        ]);
     }
 
     /**

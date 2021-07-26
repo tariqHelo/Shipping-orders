@@ -14,7 +14,18 @@
                      @error('english_name')
                         <p class="text-danger">{{ $message }}</p>
                       @enderror
-                  </div> 
+                  </div>
+                   <div class="form-group">
+                      <label>إضافة منطقة </label>
+                      <select class="select2 @error('areas') is-invalid @enderror"  name="areas[]" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
+                        @foreach($areas as $id => $areas)
+                            <option value="{{ $id }}" {{ in_array($id, old('areas', [])) ? 'selected' : '' }}>{{ $areas }}</option>
+                        @endforeach
+                      </select>
+                       @error('areas')
+                        <p class="text-danger">{{ $message }}</p>
+                      @enderror
+                   </div> 
                     <div class="form-group">
                         <label for="status">الحالة</label>
                         <div>

@@ -110,7 +110,7 @@
             </a>
           </li>
            <li class="nav-item">
-            <a href="{{route('price.create')}}" class="nav-link">
+            <a href="{{route('places_index')}}" class="nav-link">
               <i class="nav-icon fa fa-desktop"></i>
               <p>
                 الإسعار

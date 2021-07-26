@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Country extends Model
 {
+
     use HasFactory;
 
     public $table = 'countries';
@@ -14,11 +15,16 @@ class Country extends Model
      const STATUS_DRAFT = 'draft';
      const STATUS_HIDDEN = 'hidden';
     protected $fillable = [
-    'name', 'english_name', 'city_id', 'status'
+    'name', 'english_name', 'city_id[]', 'status'
     ];
 
     public function cities()
     {
-       return $this->belongsToMany(City::class);
+        return $this->hasMany(City::class);
+    }
+
+    public function dstricts()
+    {
+        return $this->hasMany(District::class);
     }
 }

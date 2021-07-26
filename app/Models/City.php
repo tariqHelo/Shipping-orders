@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class City extends Model
 {
+
     use HasFactory;
      const STATUS_ACTIVE = 'active';
      const STATUS_DRAFT = 'draft';
@@ -17,8 +18,13 @@ class City extends Model
       'name', 'english_name', 'status' , 'area_id',
       ];
 
-    public function areas()
-    {
-       return $this->belongsToMany(City::class , 'area_id' , 'id');
-    }
+      public function country()
+      {
+          return $this->belongsTo(Country::class);
+      }
+
+      public function areas()
+      {
+          return $this->hasMany(Area::class);
+      }
 }

@@ -86,3 +86,9 @@ Route::resource('/price', PriceController::class);
 
 Route::resource('/report', ReportController::class)->middleware(['auth']);
 Route::resource('/violation', ViolationController::class);
+
+Route::get('/price', [PriceController::class , 'index'])->name('places_index');
+Route::post('/price/create',[PriceController::class , 'store'])->name('form_store');
+
+Route::get('/get_cities',[PriceController::class , 'get_cities'])->name('get_cities');
+Route::get('/get_districts',[PriceController::class , 'get_districts'])->name('get_districts');
