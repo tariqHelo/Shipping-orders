@@ -6,6 +6,8 @@ use App\Models\Price;
 use App\Models\Service;
 use App\Models\City;
 use App\Models\Area;
+use App\Models\Location;
+
 
 use App\Models\Country;
 use Illuminate\Http\Request;
@@ -48,8 +50,27 @@ class PriceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {     //dd($request->all());
+           //$services = Service::all();
+            $services = $request->services;
+            $location = new Location();
+            $location->country_id = $request->country_id;
+            $location->city_id = $request->city_id;
+            $location->area_id = $request->area_id;
+            $location->save();
+
+        foreach($services as $s){
+            $priceService = new Price();
+            $priceService->location_id = $location->id; 
+            $priceService->service_id = $s['id'];//1
+            $priceService->price = $s['value'];//20nis
+            $priceService->save();
+        }
+        return "good";
+        //   \Session::flash("msg", "تم إضافة الإسعار بنجاح بنجاح");
+
+        //   return redirect()->route('roles.index');
+
     }
 
     /**

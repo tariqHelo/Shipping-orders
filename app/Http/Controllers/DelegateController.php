@@ -35,7 +35,14 @@ class DelegateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         // $category = new Category([
+        //     'name' => $request->post('name'),
+        //     'slug' => Str::slug($request->post('name')),
+        //     'parent_id' => $request->post('parent_id'),
+        //     'description' => $request->post('description'),
+        //     'status' => $request->post('status', 'active'),
+        // ]);
+        //$category->save();
     }
 
     /**

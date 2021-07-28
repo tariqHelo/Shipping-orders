@@ -31,11 +31,10 @@ class CreateDelegatesTable extends Migration
             $table->string('residence_image');
             $table->string('delivery_commission');
             $table->string('receipt_ommission');
-            $table->string('password');
             $table->enum('status' , ['active', 'draft' , 'hidden']);
             $table->foreignId('user_id')->constrained();
             $table->unsignedInteger('role_id');
-            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade')->default(2);
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade')->default(4);
             $table->timestamps();
         });
     }

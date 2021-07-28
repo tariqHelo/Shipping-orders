@@ -83,7 +83,10 @@ class ServiceController extends Controller
      */
     public function update(Request $request,$service)
     {
-        //
+        $servic = Service::create( $request->all() );
+
+        return redirect()->route('service.index')
+        ->with('success', "Product ($servic->name) created.");
     }
 
     /**

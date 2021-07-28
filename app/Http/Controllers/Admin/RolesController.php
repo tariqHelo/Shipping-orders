@@ -8,6 +8,8 @@ use App\Http\Requests\StoreRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
 use App\Models\Permission;
 use App\Models\Role;
+use App\Models\User;
+
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +19,7 @@ class RolesController extends Controller
 {
     public function index()
     { //dd(20);
-       // abort_if(Gate::denies('role_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('role_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $roles = Role::all();
 
@@ -26,11 +28,14 @@ class RolesController extends Controller
 
     public function create()
     {
-        abort_if(Gate::denies('role_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+      //  abort_if(Gate::denies('role_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $permissions = Permission::all()->pluck('title', 'id');
 
-        return view('roles.create', compact('permissions'));
+        return view('admin.roles.create',[
+            'permissions' => $permissions ,
+            'role' => new Role(),
+        ]);
     }
 
     public function store(StoreRoleRequest $request)
@@ -45,23 +50,22 @@ class RolesController extends Controller
 
     public function edit(Role $role)
     {
-        abort_if(Gate::denies('role_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+       abort_if(Gate::denies('role_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $permissions = Permission::all()->pluck('title', 'id');
-
+        $permissions = Permission::pluck('title', 'id');
         $role->load('permissions');
-
-        return view('roles.edit', compact('permissions', 'role'));
+        return view('admin.roles.edit',[
+         'permissions'=> $permissions,
+         'role' => $role ,
+        ]);
     }
 
-    public function update(UpdateRoleRequest $request, Role $role)
+    public function update(Request $request, Role $role)
     {
         $role->update($request->all());
         $role->permissions()->sync($request->input('permissions', []));
-        \Session::flash("msg", "تم تعديل الرول بنجاح");
-
+        \Session::flash("msg", "تم تعديل رول ($role->title) بنجاح");
         return redirect()->route('roles.index');
-
     }
 
     public function show(Role $role)
@@ -70,7 +74,7 @@ class RolesController extends Controller
 
         $role->load('permissions');
 
-        return view('roles.show', compact('role'));
+        return view('admin.roles.show', compact('role'));
     }
 
     public function destroy(Role $role)
