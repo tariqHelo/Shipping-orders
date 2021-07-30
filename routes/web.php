@@ -71,15 +71,19 @@ Route::resource('users', UsersController::class);
 
 Route::resource('/country', CountryController::class);
 Route::get('/country/delete/{id}', [CountryController::class , 'destroy'])->name('country.delete');
-Route::get('/country/edit/{id}', [CountryController::class , 'edit'])->name('country.edit');
+// Route::get('/country/edit/{id}', [CountryController::class , 'edit'])->name('country.edit');
 
 Route::resource('/city', CityController::class);
 Route::get('/city/delete/{id}', [CityController::class , 'destroy'])->name('city.delete');
-Route::get('/city/edit/{id}', [CityController::class , 'edit'])->name('city.edit');
+// Route::get('/city/edit/{id}', [CityController::class , 'edit'])->name('city.edit');
 
 
 Route::resource('/area', AreaController::class);
+Route::get('/area/delete/{id}', [AreaController::class , 'destroy'])->name('area.delete');
+
 Route::resource('/service', ServiceController::class);
+Route::get('/service/delete/{id}', [ServiceController::class , 'destroy'])->name('service.delete');
+
 
 Route::resource('/order', OrderController::class);
 Route::resource('/price', PriceController::class);
@@ -87,7 +91,9 @@ Route::resource('/price', PriceController::class);
 Route::resource('/report', ReportController::class)->middleware(['auth']);
 Route::resource('/violation', ViolationController::class);
 
-Route::get('/price', [PriceController::class , 'index'])->name('places_index');
+Route::resource('/price', PriceController::class);
+
+// Route::get('/price', [PriceController::class , 'index'])->name('places_index');
 Route::post('/price/create',[PriceController::class , 'store'])->name('form_store');
 
 Route::get('/get_cities',[PriceController::class , 'get_cities'])->name('get_cities');

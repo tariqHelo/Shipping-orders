@@ -14,7 +14,8 @@
  <!-- left column -->
           <div class="col-md-12">
             <!-- general form elements -->
-            <div class="card card-success">
+            <form action="{{route('price.store')}}"  method="POST" class="card card-success">
+                @csrf
               <div class="card-header">
                 <h3 class="card-title-rtl">إضافة أسعار المناطق</h3>
               </div>
@@ -24,7 +25,7 @@
                   <div class="row">
                       <div class="col-4">
                           <div class="form-group">
-                              <label for="country_id">Country</label>
+                              <label for="country_id">الدولة</label>
                               <select name="country_id" id="country_id" class="form-control">
                                   <option value=""> --- </option>
                                   @foreach($countries as $country)
@@ -36,7 +37,7 @@
                       </div>
                       <div class="col-4">
                           <div class="form-group">
-                              <label for="city_id">City</label>
+                              <label for="city_id">المدينة</label>
                               <select name="city_id" id="city_id" class="form-control">
                               </select>
                               @error('city_id')<span class="text-danger">{{ $message }}</span>@enderror
@@ -44,77 +45,41 @@
                       </div>
                       <div class="col-4">
                           <div class="form-group">
-                              <label for="district_id">District</label>
-                              <select name="district_id" id="district_id" class="form-control">
+                              <label for="area_id">المنطقة</label>
+                               <select name="area_id" id="area_id" class="form-control">
                               </select>
-                              @error('district_id')<span class="text-danger">{{ $message }}</span>@enderror
+                              @error('area_id')<span class="text-danger">{{ $message }}</span>@enderror
                           </div>
                       </div>
                   </div>
                 </div>
-                <table class="table table-striped table-bordered table-hover" id="datatable_ajax">
-								<thead>
-								<tr role="row" class="heading">
-									<th width="7%">
-										 Record&nbsp;#
-									</th>
-									<th width="5%">
-										 Date
-									</th>
-									<th width="5%">
-										 Customer
-									</th>
-									<th width="5%">
-										 Ship&nbsp;To
-									</th>
-									<th width="5%">
-										 Price
-									</th>
-									<th width="5%">
-										 Amount
-									</th>
-									<th width="5%">
-										 Status
-									</th>
-									<th width="5%">
-										 Actions
-									</th>
-								</tr>
-								<tr role="row" class="filter">
-									<td>
-										<input type="text" class="form-control form-filter input-sm" name="order_id">
-									</td>
-									<td>
-										<input type="text" class="form-control form-filter input-sm" name="order_id">
-									</td>
-                                    <td>
-										<input type="text" class="form-control form-filter input-sm" name="order_id">
-									</td>
-                                    <td>
-										<input type="text" class="form-control form-filter input-sm" name="order_id">
-									</td>
-                                    <td>
-										<input type="text" class="form-control form-filter input-sm" name="order_id">
-									</td>
-                                    <td>
-										<input type="text" class="form-control form-filter input-sm" name="order_id">
-									</td>
-                                    <td>
-										<input type="text" class="form-control form-filter input-sm" name="order_id">
-									</td>
-                                    <td>
-										<input type="text" class="form-control form-filter input-sm" name="order_id">
-									</td>
-								</tr>
-								</thead>
-								<tbody>
-								</tbody>
-								</table>
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr role="row" class="heading">
+                            @foreach($services as $service)
+                                <th width="5%">
+                                    {{$service->name}}
+                            </th>   
+                            @endforeach
+                        </tr>
+                        
+                    </thead>
+                    <tbody>
+                        <tr role="row" class="filter">
+                           @foreach($services as $index => $service)
+                                <td>
+                                    <input type="hidden" value="{{ $service->id }}" name="services[{{$index}}][id]" />
+                                    <input type="number" name="services[{{$index}}][value]" class="form-control form-filter input-sm">
+                                </td>
+                            @endforeach
+                        </tr>
+                    </tbody>
+                </table>
                  <div class="card-footer">
-                    <button type="button" class="btn btn-primary add-new-row" data-index="0">حفظ</button>
+                    <button type="submit" class="btn btn-primary add-new-row" data-index="0">حفظ</button>
                   </div>
 
-            </div>
+            </form>
             
             <!-- /.card -->
          </div>
@@ -150,17 +115,15 @@
                     })
                 }, "json");
             }
-
-
             function populateDistricts() {
-                $('option', $('#district_id')).remove();
-                $('#district_id').append($('<option></option>').val('').html(' --- '));
+                $('option', $('#area_id')).remove();
+                $('#area_id').append($('<option></option>').val('').html(' --- '));
 
                 var cityIdVal = $('#city_id').val() != null ? $('#city_id').val() : '{{ old('city_id') }}';
                 $.get("{{ route('get_districts') }}", { city_id: cityIdVal }, function (data) {
                     $.each(data, function(val, text) {
-                        var selectedVal = val == '{{ old('district_id') }}' ? "selected" : "";
-                        $('#district_id').append($('<option ' + selectedVal + '></option>').val(val).html(text));
+                        var selectedVal = val == '{{ old('area_id') }}' ? "selected" : "";
+                        $('#area_id').append($('<option ' + selectedVal + '></option>').val(val).html(text));
                     })
                 }, "json");
             }

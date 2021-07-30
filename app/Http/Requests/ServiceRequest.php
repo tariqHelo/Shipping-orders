@@ -32,4 +32,13 @@ class ServiceRequest extends FormRequest
             Service::STATUS_DRAFT,
         ];
     }
+    public function messages()
+    {
+        return [
+        'name.required' => 'يجب إدخال الإسم',
+        'english_name.required' => 'يجب إدخال باللغة الإنجليزية',
+        'type.required' => 'يجب إدخال نوع الشحن',
+        'status.required' => 'يجب إدخال القيمة',
+        ];
+    }
 }

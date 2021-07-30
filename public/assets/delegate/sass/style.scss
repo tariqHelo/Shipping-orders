@@ -1,0 +1,851 @@
+@import 'components/css/bootstrap.min.css';
+@import 'components/css/font-cairo.css';
+@import 'components/css/semantic.min.css';
+
+@font-face {
+    font-family: st;
+    src: url('components/fonts/sf-cartoonist-hand.sc.ttf');
+}
+
+@font-face {
+    font-family: sb;
+    src: url('components/fonts/sf-cartoonist-hand.bold.ttf');
+}
+
+.Dark {
+    .login {
+        background: #2b2b2b;
+    }
+}
+
+.undo {
+    position: fixed;
+    width: 25px;
+    z-index: 99;
+    left: 10px;
+    top: 10px;
+}
+
+
+
+.login {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    padding: 0 25px;
+
+    .back {
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        left: 0;
+        z-index: 0;
+    }
+
+    .overlay {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .row {
+        z-index: 99;
+        position: relative;
+
+        .logo {
+            width: 80%;
+            display: block;
+            margin: 0 auto;
+            filter: brightness(1.5);
+        }
+
+        form {
+            margin: 50px 0;
+            display: block;
+
+            input,
+            select {
+                width: 90%;
+                display: block;
+                margin: 0 auto;
+                padding: 15px;
+                border-radius: 25px;
+                border: 0;
+                outline: none;
+                box-shadow: none;
+                color: #555;
+                text-align: left;
+                font-size: 15px;
+            }
+
+            select {
+                height: 46px;
+                padding: 8px 15px;
+            }
+
+            .LoginButton {
+                border: 0;
+                width: 90%;
+                display: block;
+                margin: 20px auto 50px;
+                border-radius: 20px;
+                padding: 11px;
+                background: #2cbfbd;
+                color: #fff;
+            }
+
+            p {
+                color: #fff;
+                text-align: center;
+            }
+
+
+        }
+
+        .create {
+            color: #fff;
+            font-size: 15px;
+            display: block;
+            text-align: center;
+            margin-top: 50px;
+
+            b {
+                color: #2cbfbd;
+            }
+        }
+    }
+
+    .forget {
+        color: #2cbfbd !important;
+    }
+}
+
+.Register {
+    align-items: flex-start;
+    padding-bottom: 35px;
+    padding-top: 35px;
+
+    .logo {
+        width: 60% !important;
+        margin: 0px auto 25px !important;
+    }
+
+    form {
+        margin: 0 !important;
+
+        p {
+            color: #c3c3c3;
+            text-align: center;
+            line-height: 2;
+            font-size: 15px;
+
+            span {
+                color: #42ffff;
+            }
+        }
+
+        .LoginButton {
+            margin: 0 auto !important;
+        }
+    }
+
+    .create {
+        margin-top: 20px !important;
+    }
+}
+
+.index {
+    background: linear-gradient(to bottom, #ffffff, #ffffff);
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 70px;
+
+    .navTop {
+        ul {
+            padding: 0;
+            display: flex;
+            position: fixed;
+            width: 100%;
+            height: 60px;
+            align-items: center;
+            z-index: 999;
+            background: #fff;
+            border-bottom: 1px solid #f1f1f1;
+
+            li {
+                width: (100%/3.1);
+                display: inline-block;
+                text-align: center;
+
+                .icon {
+                    width: 61px;
+                }
+
+                .notification,
+                .text {
+                    width: 25px;
+                    margin-right: 10px;
+                    display: block;
+                    margin-left: auto;
+                    ;
+                }
+
+                .text {
+                    margin-right: auto;
+                    margin-left: 10px;
+                }
+
+                .undo {
+                    right: 10px;
+                    left: auto;
+                }
+            }
+        }
+    }
+
+
+    .navigation_bar {
+        width: 102%;
+        height: 60px;
+        background: #f3fffd;
+        bottom: -1px;
+        left: -1%;
+        right: 0;
+        z-index: 9999;
+        position: fixed;
+        border-top: 2px solid #cfece8;
+        border-radius: 25px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+
+        ul {
+            padding: 0;
+
+            li {
+                width: (100%/5.2);
+                display: inline-block;
+                position: relative;
+                overflow: hidden;
+                border-right: 1px solid #cccccc4f;
+
+                img {
+                    width: 30px;
+                    display: block;
+                    margin: 15px auto;
+                 }
+            }
+        }
+    }
+
+
+    .cards {
+        margin-top: 80px;
+
+        .card {
+            margin: 0 auto;
+            width: 90%;
+        }
+
+        .icon {
+            width: 25px;
+            display: inline-block;
+            margin-right: 15px;
+        }
+
+        .description {
+            ul {
+                padding: 0;
+
+                li {
+                    display: inline-block;
+                    width: (100% / 2.1);
+                    text-align: center;
+                    font-weight: 900;
+                    font-size: 16px;
+                    padding-top: 16px;
+
+                    b {
+                        color: #067e86;
+                        font-size: 21px;
+                        line-height: 2;
+                    }
+                }
+            }
+        }
+
+        .view {
+            width: 100%;
+            background: #4bbfad;
+            padding: 15px;
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+    }
+
+    .block,
+    .blocks {
+        background: #fff;
+        padding: 40px 0 30px;
+        width: 95%;
+        display: block;
+        margin: 0 auto;
+
+        ul {
+            padding: 0;
+
+            li {
+                width: (100%/3.1);
+                display: inline-block;
+                text-align: center;
+                font-size: 12px;
+
+                a {
+                    color: #4bbfad;
+                    font-size: 15px;
+                    ;
+                }
+
+                .icon {
+                    width: 51px;
+                    display: block;
+                    margin: 20px auto;
+                }
+            }
+        }
+    }
+
+    .blocks {
+        margin-top: 10px;
+        padding: 5px;
+
+        ul {
+            li {
+                width: (100%/2.15);
+                background: #eeefef;
+                padding: 25px 10px;
+                margin: 7px 5px;
+
+                b {
+                    display: block;
+                    font-size: 15px;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    color: #555;
+                }
+            }
+        }
+    }
+
+    .sidebar {
+        position: fixed;
+        z-index: 9999;
+        width: 100%;
+        top: 0;
+        left: -110%;
+        height: 100vh;
+        background: #000;
+        transition: all 1s ease;
+
+        &.open {
+            left: 0%;
+            transition: all 1s ease;
+
+            .backNAv,
+            .overlay {
+                left: 0%;
+                transition: all 1s ease;
+
+            }
+
+            .close {
+                transition: all 2s ease;
+                right: 10px;
+                opacity: 1;
+            }
+        }
+
+        .backNAv {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background-position: center;
+            filter: blur(2.5px);
+            left: -110%;
+            transition: all 1s ease;
+        }
+
+        .overlay {
+            width: 100%;
+            height: 100vh;
+            position: fixed;
+            left: -110%;
+            transition: all 1s ease;
+            background: linear-gradient(to bottom, #074d5f, #446f6fcf);
+        }
+
+        .cards {
+            margin-top: 20px;
+
+            .card {
+                background: transparent;
+                box-shadow: none;
+                color: #fff;
+
+                .ui.image {
+                    width: 80px;
+                    float: left;
+                    margin-left: 0;
+                    margin-right: 19px;
+                    border-radius: 50%;
+                    border: 3px solid #fff;
+                    margin-top: -10px;
+                }
+
+                .description {
+                    clear: inherit;
+                    margin-top: 0 !important;
+                    color: #ffffff85 !important
+                }
+
+                .header,
+                .meta {
+                    color: #fff !important;
+                }
+
+
+            }
+        }
+
+        ul {
+            position: relative;
+            padding: 0;
+            border-top: 2px solid #fff;
+            margin-top: 26px;
+
+            li {
+                padding: 25px;
+                font-size: 18px;
+                color: #ffffffd9;
+
+                img {
+                    width: 30px;
+                    margin-right: 10px;
+
+                }
+            }
+        }
+
+        .close {
+            position: fixed;
+            top: 9px;
+            bottom: auto;
+            width: 30px;
+            overflow: hidden;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            outline: none;
+            transition: all 2s ease;
+            right: -100px;
+
+            img {
+                width: 30px;
+            }
+        }
+    }
+
+    .newOrder {
+        margin-top: 80px;
+
+        h3 {
+            font-family: sb;
+            text-transform: capitalize;
+            letter-spacing: 2px;
+            font-size: 27px;
+            color: #22a09f;
+            margin-bottom: 35px;
+
+            hr {
+                width: 30px;
+                height: 2px;
+                background: #ffc107;
+                margin: 0px 0 15px 50px;
+            }
+
+            .recive {
+                width: 40px;
+                margin-top: -10px;
+            }
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 22px;
+
+            label {
+                position: absolute;
+                top: 0;
+                background: #f5ffff;
+                right: 0;
+                padding: 10.5px 5px;
+                color: #038c8a;
+                text-transform: capitalize;
+                border: 1px solid #dddddd;
+                border-radius: 15px;
+                width: auto;
+                text-align: center;
+                border-left: 0;
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+
+            select,
+            input {
+                width: 100%;
+                padding: 12px;
+                border-radius: 25px;
+                border: 1px solid #ddd;
+                margin-bottom: 17px;
+                outline: none;
+            }
+
+            input[type="date"] {
+                padding: 9.3px !important;
+                background: #fff;
+
+            }
+
+            select {
+                height: 42px;
+                padding: 5px 13px;
+            }
+        }
+
+        .fields {
+            background: #ffffff7a;
+            padding: 13px;
+            border: 1px solid #f5efef;
+            color: #7b7b7b;
+            border-radius: 13px;
+
+            .chosse {
+                font-family: st;
+                letter-spacing: 1px;
+                font-weight: 600;
+                font-size: 17px;
+                margin-bottom: 25px;
+                color: #7b7b7b;
+
+            }
+
+            .radio.checkbox {
+                min-height: 15px;
+                margin: 5px;
+                font-weight: 600;
+            }
+
+
+        }
+
+        .ui.toggle.checkbox input:checked~.box:before,
+        .ui.toggle.checkbox input:checked~label:before,
+        .ui.radio.checkbox .box:after,
+        .ui.radio.checkbox label:after,
+        .ui.radio.checkbox input:checked~.box:after,
+        .ui.radio.checkbox input:checked~label:after {
+            background-color: #37c2c1 !important;
+        }
+
+        .ui.segment {
+            background: #ffffff45;
+            box-shadow: none;
+            border: 0;
+        }
+
+        .request {
+            width: 100%;
+            background: #4bbfad;
+            padding: 15px;
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin: 15px auto 15px;
+        }
+    }
+
+    div.notification {
+        margin-top: 65px;
+        position: relative;
+        overflow: hidden;
+
+        ul {
+            padding: 0;
+            .date{
+                margin-top:  5px;
+                text-align: left;
+                display: block;
+                line-height: 1;
+                padding: 10px;
+                background: #ccc5;
+
+                p {
+                    margin: 8px;
+                    font-weight: 600;
+                    span{
+                        color: #33c1bf;
+                        margin-left: 15px ;
+                    }
+                }
+            }
+            li {
+                border: 0;
+                background: #fff;
+                margin: 5px  auto;
+                border-radius: 1px;
+                box-shadow: 1px 1px 5px #cccc;
+                display: flex;
+
+                .img_notification {
+                    width: 100px;
+                    display: flex;
+                    align-content: center;
+                    align-items: center;
+                    img {
+                        width: 50px;
+                        margin: 17px;
+                    } 
+                } 
+                
+                .data{
+                    padding: 6px;
+
+                    h3,p{
+                        display: inline-block ;
+                        margin-bottom: 5px ;
+                        color: #7b7b7b;
+
+                    }
+                }
+            }
+        }
+    }
+
+    .AllOrder{
+        .AddOrder {
+            position: fixed;
+            width: 50px;
+            z-index: 99;
+            right: 20px;
+            bottom: 100px;
+            background: #fff;
+            padding: 4px;
+            border-radius: 50%;
+            border: 1px solid #ccc;
+        } 
+        .cards {
+            margin-top: 0px;
+            .card{
+                width: 100%;
+                margin-bottom: 6px;
+                background: #f5f3f3bf ;
+                border: 1px solid #ccc6;
+                box-shadow: none;
+                .meta {
+                    margin-top : 4px;
+                }
+                .icon{
+                    margin-right: 3px ;
+                    width: 15px;
+                }
+            }
+        } 
+    }
+    .LoginButton {
+        display: block;
+        width: 100%;
+        background: #37c2c1;
+        padding: 15px;
+        color: #fff;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.index.Dark {
+    background: linear-gradient(to bottom, #0c0c0c, #040404);
+    .navTop ul { 
+        background: #0c0c0c;
+     }
+     .newOrder .ui.segment {
+        background: #ffffff00;
+      }
+      .ui.toggle.checkbox input:checked~.box, .ui.toggle.checkbox input:checked~label {
+        color: #fff !important;
+    }
+     .newOrder .form-group select, 
+     .newOrder .form-group input,
+      input { 
+        background: transparent;
+        color: #fff;
+    }
+    .LoginButton{
+        display: block;
+        width: 100%;
+        background: #37c2c1;
+        padding: 15px;
+        color: #fff;
+    }
+    h3 { 
+        color: #ffffff; 
+    }
+    .ui.toggle.checkbox label {
+        color: #ffffff; 
+
+    }
+    .navTop ul li .text { 
+        background: #fff;
+        padding: 5px;
+        border-radius: 5px;
+    }
+}
+
+
+body.Ar{
+         direction: rtl;
+         .navTop ul li .text {
+            margin-right: 10px;
+            margin-left: auto;
+        }
+        .navTop ul li .notification {
+             margin-right: auto;
+             margin-left: 10px;
+        }
+        .header ,.meta  {
+            text-align: right;
+        }
+        
+        .ui.cards>.card .content img { 
+            float: right;
+            margin-right: 0;
+            margin-left: 15px;
+            
+        }
+        .ui.cards>.card .content {
+            span{
+                float: right;
+               
+            }
+        }
+        span.right.floated {
+            float: left!important ;
+        }
+        .sidebar .cards .card .ui.image {
+             float: right;
+             margin-left: 19px;
+             margin-right: 0;
+         }
+         .sidebar .description {
+            text-align: right;
+        }
+        .sidebar ul { 
+            text-align: right;
+            direction: rtl;
+            list-style: none ;
+        }
+        .sidebar ul li img {
+            width: 30px;
+            margin-left: 10px;
+        }
+        .sidebar .close { 
+            left: -100px;
+        }
+        
+        .sidebar.open .close {
+             left: 10px;
+             right: auto ;
+         }
+           form input, .login  form select {
+              text-align: right!important ; 
+        }
+        .Register { 
+            direction: rtl;
+        }
+        div.notification ul {
+             direction: rtl;
+        }
+        div.notification ul li .data h3,  div.notification ul li .data p {
+           text-align: right;
+           float: right;
+
+        }
+        div.notification ul .date {
+             text-align: right; 
+        }
+        .navTop ul li .undo {
+            right: auto;
+            left: 10px;
+        }
+        .newOrder h3 { 
+            text-align: right;
+        }
+        .newOrder h3 hr {  
+            margin: 20px 0 15px 50px;
+        }
+        .newOrder .ui.segment {  
+            text-align: right;
+        }
+        .newOrder .form-group label {
+            top: 0;
+            left: 1px;
+            right: auto;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+        }
+        .newOrder .fields { 
+            text-align: right;
+         }
+         .ui.radio.checkbox .box, .ui.radio.checkbox label {
+            padding-left: 0;
+            padding-right: 1.85714em;
+        }
+        .ui.radio.checkbox .box:after, .ui.radio.checkbox label:after, 
+        .ui.radio.checkbox .box:before, .ui.radio.checkbox label:before {
+            right: 0;
+            left: auto;
+        }
+        .ui.toggle.checkbox .box, .ui.toggle.checkbox label {
+             padding-right: 4.5rem;
+            padding-left: 0;
+        }
+        .ui.toggle.checkbox .box:before, .ui.toggle.checkbox label:before,
+        .ui.toggle.checkbox input~.box:after, .ui.toggle.checkbox input~label:after  {
+            right: 0;
+            left: auto;
+        }
+        .description {
+            text-align: right;
+        }
+        .AllOrder .AddOrder { 
+            left: 20px;
+            right: auto; 
+        }
+ }
+  

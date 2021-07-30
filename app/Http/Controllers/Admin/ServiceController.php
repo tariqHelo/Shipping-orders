@@ -42,10 +42,9 @@ class ServiceController extends Controller
      */
     public function store(ServiceRequest $request)
     {
-         $servic = Service::create( $request->all() );
-
-         return redirect()->route('service.index')
-            ->with('success', "Product ($servic->name) created.");
+         $service = Service::create( $request->all() );
+        \Session::flash("msg", "s:تم إضافة خدمة ($service->name) بنجاح");
+         return redirect()->route('service.index');
     }
 
     /**
@@ -81,12 +80,12 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$service)
+    public function update(ServiceRequest $request,$id)
     {
-        $servic = Service::create( $request->all() );
-
-        return redirect()->route('service.index')
-        ->with('success', "Product ($servic->name) created.");
+         $service = Service::findOrFail($id);
+         $service->update( $request->all() );
+        \Session::flash("msg", "s:تم تعديل خدمة ($service->name) بنجاح");
+        return redirect()->route('service.index');
     }
 
     /**
@@ -99,7 +98,7 @@ class ServiceController extends Controller
     {
         $service = Service::findOrFail($id);
         $service->delete();
-        session()->flash("msg", "e: Deleted ($service->name) Successfully");
+        \Session::flash("msg", "w:تم حذف خدمة ($service->name) بنجاح");
         return redirect()->route('service.index');
     }
 }

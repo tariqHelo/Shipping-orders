@@ -1,0 +1,588 @@
+@import url(components/css/bootstrap.min.css);
+@import url(components/css/font-cairo.css);
+@import url(components/css/semantic.min.css);
+@font-face {
+  font-family: st;
+  src: url("components/fonts/sf-cartoonist-hand.sc.ttf"); }
+@font-face {
+  font-family: sb;
+  src: url("components/fonts/sf-cartoonist-hand.bold.ttf"); }
+.Dark .login {
+  background: #2b2b2b; }
+
+.undo {
+  position: fixed;
+  width: 25px;
+  z-index: 99;
+  left: 10px;
+  top: 10px; }
+
+.login {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  padding: 0 25px; }
+  .login .back {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    z-index: 0; }
+  .login .overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; }
+  .login .row {
+    z-index: 99;
+    position: relative; }
+    .login .row .logo {
+      width: 80%;
+      display: block;
+      margin: 0 auto;
+      filter: brightness(1.5); }
+    .login .row form {
+      margin: 50px 0;
+      display: block; }
+      .login .row form input,
+      .login .row form select {
+        width: 90%;
+        display: block;
+        margin: 0 auto;
+        padding: 15px;
+        border-radius: 25px;
+        border: 0;
+        outline: none;
+        box-shadow: none;
+        color: #555;
+        text-align: left;
+        font-size: 15px; }
+      .login .row form select {
+        height: 46px;
+        padding: 8px 15px; }
+      .login .row form .LoginButton {
+        border: 0;
+        width: 90%;
+        display: block;
+        margin: 20px auto 50px;
+        border-radius: 20px;
+        padding: 11px;
+        background: #2cbfbd;
+        color: #fff; }
+      .login .row form p {
+        color: #fff;
+        text-align: center; }
+    .login .row .create {
+      color: #fff;
+      font-size: 15px;
+      display: block;
+      text-align: center;
+      margin-top: 50px; }
+      .login .row .create b {
+        color: #2cbfbd; }
+  .login .forget {
+    color: #2cbfbd !important; }
+
+.Register {
+  align-items: flex-start;
+  padding-bottom: 35px;
+  padding-top: 35px; }
+  .Register .logo {
+    width: 60% !important;
+    margin: 0px auto 25px !important; }
+  .Register form {
+    margin: 0 !important; }
+    .Register form p {
+      color: #c3c3c3;
+      text-align: center;
+      line-height: 2;
+      font-size: 15px; }
+      .Register form p span {
+        color: #42ffff; }
+    .Register form .LoginButton {
+      margin: 0 auto !important; }
+  .Register .create {
+    margin-top: 20px !important; }
+
+.index {
+  background: linear-gradient(to bottom, #ffffff, #ffffff);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 70px; }
+  .index .navTop ul {
+    padding: 0;
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    align-items: center;
+    z-index: 999;
+    background: #fff;
+    border-bottom: 1px solid #f1f1f1; }
+    .index .navTop ul li {
+      width: 32.2580645161%;
+      display: inline-block;
+      text-align: center; }
+      .index .navTop ul li .icon {
+        width: 61px; }
+      .index .navTop ul li .notification,
+      .index .navTop ul li .text {
+        width: 25px;
+        margin-right: 10px;
+        display: block;
+        margin-left: auto; }
+      .index .navTop ul li .text {
+        margin-right: auto;
+        margin-left: 10px; }
+      .index .navTop ul li .undo {
+        right: 10px;
+        left: auto; }
+  .index .navigation_bar {
+    width: 102%;
+    height: 60px;
+    background: #f3fffd;
+    bottom: -1px;
+    left: -1%;
+    right: 0;
+    z-index: 9999;
+    position: fixed;
+    border-top: 2px solid #cfece8;
+    border-radius: 25px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0; }
+    .index .navigation_bar ul {
+      padding: 0; }
+      .index .navigation_bar ul li {
+        width: 19.2307692308%;
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+        border-right: 1px solid #cccccc4f; }
+        .index .navigation_bar ul li img {
+          width: 30px;
+          display: block;
+          margin: 15px auto; }
+  .index .cards {
+    margin-top: 80px; }
+    .index .cards .card {
+      margin: 0 auto;
+      width: 90%; }
+    .index .cards .icon {
+      width: 25px;
+      display: inline-block;
+      margin-right: 15px; }
+    .index .cards .description ul {
+      padding: 0; }
+      .index .cards .description ul li {
+        display: inline-block;
+        width: 47.619047619%;
+        text-align: center;
+        font-weight: 900;
+        font-size: 16px;
+        padding-top: 16px; }
+        .index .cards .description ul li b {
+          color: #067e86;
+          font-size: 21px;
+          line-height: 2; }
+    .index .cards .view {
+      width: 100%;
+      background: #4bbfad;
+      padding: 15px;
+      color: #fff;
+      font-weight: 600;
+      letter-spacing: 1px; }
+  .index .block,
+  .index .blocks {
+    background: #fff;
+    padding: 40px 0 30px;
+    width: 95%;
+    display: block;
+    margin: 0 auto; }
+    .index .block ul,
+    .index .blocks ul {
+      padding: 0; }
+      .index .block ul li,
+      .index .blocks ul li {
+        width: 32.2580645161%;
+        display: inline-block;
+        text-align: center;
+        font-size: 12px; }
+        .index .block ul li a,
+        .index .blocks ul li a {
+          color: #4bbfad;
+          font-size: 15px; }
+        .index .block ul li .icon,
+        .index .blocks ul li .icon {
+          width: 51px;
+          display: block;
+          margin: 20px auto; }
+  .index .blocks {
+    margin-top: 10px;
+    padding: 5px; }
+    .index .blocks ul li {
+      width: 46.511627907%;
+      background: #eeefef;
+      padding: 25px 10px;
+      margin: 7px 5px; }
+      .index .blocks ul li b {
+        display: block;
+        font-size: 15px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        color: #555; }
+  .index .sidebar {
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    top: 0;
+    left: -110%;
+    height: 100vh;
+    background: #000;
+    transition: all 1s ease; }
+    .index .sidebar.open {
+      left: 0%;
+      transition: all 1s ease; }
+      .index .sidebar.open .backNAv,
+      .index .sidebar.open .overlay {
+        left: 0%;
+        transition: all 1s ease; }
+      .index .sidebar.open .close {
+        transition: all 2s ease;
+        right: 10px;
+        opacity: 1; }
+    .index .sidebar .backNAv {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background-position: center;
+      filter: blur(2.5px);
+      left: -110%;
+      transition: all 1s ease; }
+    .index .sidebar .overlay {
+      width: 100%;
+      height: 100vh;
+      position: fixed;
+      left: -110%;
+      transition: all 1s ease;
+      background: linear-gradient(to bottom, #074d5f, #446f6fcf); }
+    .index .sidebar .cards {
+      margin-top: 20px; }
+      .index .sidebar .cards .card {
+        background: transparent;
+        box-shadow: none;
+        color: #fff; }
+        .index .sidebar .cards .card .ui.image {
+          width: 80px;
+          float: left;
+          margin-left: 0;
+          margin-right: 19px;
+          border-radius: 50%;
+          border: 3px solid #fff;
+          margin-top: -10px; }
+        .index .sidebar .cards .card .description {
+          clear: inherit;
+          margin-top: 0 !important;
+          color: #ffffff85 !important; }
+        .index .sidebar .cards .card .header,
+        .index .sidebar .cards .card .meta {
+          color: #fff !important; }
+    .index .sidebar ul {
+      position: relative;
+      padding: 0;
+      border-top: 2px solid #fff;
+      margin-top: 26px; }
+      .index .sidebar ul li {
+        padding: 25px;
+        font-size: 18px;
+        color: #ffffffd9; }
+        .index .sidebar ul li img {
+          width: 30px;
+          margin-right: 10px; }
+    .index .sidebar .close {
+      position: fixed;
+      top: 9px;
+      bottom: auto;
+      width: 30px;
+      overflow: hidden;
+      border: 1px solid #fff;
+      border-radius: 50%;
+      outline: none;
+      transition: all 2s ease;
+      right: -100px; }
+      .index .sidebar .close img {
+        width: 30px; }
+  .index .newOrder {
+    margin-top: 80px; }
+    .index .newOrder h3 {
+      font-family: sb;
+      text-transform: capitalize;
+      letter-spacing: 2px;
+      font-size: 27px;
+      color: #22a09f;
+      margin-bottom: 35px; }
+      .index .newOrder h3 hr {
+        width: 30px;
+        height: 2px;
+        background: #ffc107;
+        margin: 0px 0 15px 50px; }
+      .index .newOrder h3 .recive {
+        width: 40px;
+        margin-top: -10px; }
+    .index .newOrder .form-group {
+      position: relative;
+      margin-bottom: 22px; }
+      .index .newOrder .form-group label {
+        position: absolute;
+        top: 0;
+        background: #f5ffff;
+        right: 0;
+        padding: 10.5px 5px;
+        color: #038c8a;
+        text-transform: capitalize;
+        border: 1px solid #dddddd;
+        border-radius: 15px;
+        width: auto;
+        text-align: center;
+        border-left: 0;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0; }
+      .index .newOrder .form-group select,
+      .index .newOrder .form-group input {
+        width: 100%;
+        padding: 12px;
+        border-radius: 25px;
+        border: 1px solid #ddd;
+        margin-bottom: 17px;
+        outline: none; }
+      .index .newOrder .form-group input[type="date"] {
+        padding: 9.3px !important;
+        background: #fff; }
+      .index .newOrder .form-group select {
+        height: 42px;
+        padding: 5px 13px; }
+    .index .newOrder .fields {
+      background: #ffffff7a;
+      padding: 13px;
+      border: 1px solid #f5efef;
+      color: #7b7b7b;
+      border-radius: 13px; }
+      .index .newOrder .fields .chosse {
+        font-family: st;
+        letter-spacing: 1px;
+        font-weight: 600;
+        font-size: 17px;
+        margin-bottom: 25px;
+        color: #7b7b7b; }
+      .index .newOrder .fields .radio.checkbox {
+        min-height: 15px;
+        margin: 5px;
+        font-weight: 600; }
+    .index .newOrder .ui.toggle.checkbox input:checked ~ .box:before,
+    .index .newOrder .ui.toggle.checkbox input:checked ~ label:before,
+    .index .newOrder .ui.radio.checkbox .box:after,
+    .index .newOrder .ui.radio.checkbox label:after,
+    .index .newOrder .ui.radio.checkbox input:checked ~ .box:after,
+    .index .newOrder .ui.radio.checkbox input:checked ~ label:after {
+      background-color: #37c2c1 !important; }
+    .index .newOrder .ui.segment {
+      background: #ffffff45;
+      box-shadow: none;
+      border: 0; }
+    .index .newOrder .request {
+      width: 100%;
+      background: #4bbfad;
+      padding: 15px;
+      color: #fff;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin: 15px auto 15px; }
+  .index div.notification {
+    margin-top: 65px;
+    position: relative;
+    overflow: hidden; }
+    .index div.notification ul {
+      padding: 0; }
+      .index div.notification ul .date {
+        margin-top: 5px;
+        text-align: left;
+        display: block;
+        line-height: 1;
+        padding: 10px;
+        background: #ccc5; }
+        .index div.notification ul .date p {
+          margin: 8px;
+          font-weight: 600; }
+          .index div.notification ul .date p span {
+            color: #33c1bf;
+            margin-left: 15px; }
+      .index div.notification ul li {
+        border: 0;
+        background: #fff;
+        margin: 5px  auto;
+        border-radius: 1px;
+        box-shadow: 1px 1px 5px #cccc;
+        display: flex; }
+        .index div.notification ul li .img_notification {
+          width: 100px;
+          display: flex;
+          align-content: center;
+          align-items: center; }
+          .index div.notification ul li .img_notification img {
+            width: 50px;
+            margin: 17px; }
+        .index div.notification ul li .data {
+          padding: 6px; }
+          .index div.notification ul li .data h3, .index div.notification ul li .data p {
+            display: inline-block;
+            margin-bottom: 5px;
+            color: #7b7b7b; }
+  .index .AllOrder .AddOrder {
+    position: fixed;
+    width: 50px;
+    z-index: 99;
+    right: 20px;
+    bottom: 100px;
+    background: #fff;
+    padding: 4px;
+    border-radius: 50%;
+    border: 1px solid #ccc; }
+  .index .AllOrder .cards {
+    margin-top: 0px; }
+    .index .AllOrder .cards .card {
+      width: 100%;
+      margin-bottom: 6px;
+      background: #f5f3f3bf;
+      border: 1px solid #ccc6;
+      box-shadow: none; }
+      .index .AllOrder .cards .card .meta {
+        margin-top: 4px; }
+      .index .AllOrder .cards .card .icon {
+        margin-right: 3px;
+        width: 15px; }
+  .index .LoginButton {
+    display: block;
+    width: 100%;
+    background: #37c2c1;
+    padding: 15px;
+    color: #fff; }
+
+.index.Dark {
+  background: linear-gradient(to bottom, #0c0c0c, #040404); }
+  .index.Dark .navTop ul {
+    background: #0c0c0c; }
+  .index.Dark .newOrder .ui.segment {
+    background: #ffffff00; }
+  .index.Dark .ui.toggle.checkbox input:checked ~ .box, .index.Dark .ui.toggle.checkbox input:checked ~ label {
+    color: #fff !important; }
+  .index.Dark .newOrder .form-group select,
+  .index.Dark .newOrder .form-group input,
+  .index.Dark input {
+    background: transparent;
+    color: #fff; }
+  .index.Dark .LoginButton {
+    display: block;
+    width: 100%;
+    background: #37c2c1;
+    padding: 15px;
+    color: #fff; }
+  .index.Dark h3 {
+    color: #ffffff; }
+  .index.Dark .ui.toggle.checkbox label {
+    color: #ffffff; }
+  .index.Dark .navTop ul li .text {
+    background: #fff;
+    padding: 5px;
+    border-radius: 5px; }
+
+body.Ar {
+  direction: rtl; }
+  body.Ar .navTop ul li .text {
+    margin-right: 10px;
+    margin-left: auto; }
+  body.Ar .navTop ul li .notification {
+    margin-right: auto;
+    margin-left: 10px; }
+  body.Ar .header, body.Ar .meta {
+    text-align: right; }
+  body.Ar .ui.cards > .card .content img {
+    float: right;
+    margin-right: 0;
+    margin-left: 15px; }
+  body.Ar .ui.cards > .card .content span {
+    float: right; }
+  body.Ar span.right.floated {
+    float: left !important; }
+  body.Ar .sidebar .cards .card .ui.image {
+    float: right;
+    margin-left: 19px;
+    margin-right: 0; }
+  body.Ar .sidebar .description {
+    text-align: right; }
+  body.Ar .sidebar ul {
+    text-align: right;
+    direction: rtl;
+    list-style: none; }
+  body.Ar .sidebar ul li img {
+    width: 30px;
+    margin-left: 10px; }
+  body.Ar .sidebar .close {
+    left: -100px; }
+  body.Ar .sidebar.open .close {
+    left: 10px;
+    right: auto; }
+  body.Ar form input, body.Ar .login form select {
+    text-align: right !important; }
+  body.Ar .Register {
+    direction: rtl; }
+  body.Ar div.notification ul {
+    direction: rtl; }
+  body.Ar div.notification ul li .data h3, body.Ar div.notification ul li .data p {
+    text-align: right;
+    float: right; }
+  body.Ar div.notification ul .date {
+    text-align: right; }
+  body.Ar .navTop ul li .undo {
+    right: auto;
+    left: 10px; }
+  body.Ar .newOrder h3 {
+    text-align: right; }
+  body.Ar .newOrder h3 hr {
+    margin: 20px 0 15px 50px; }
+  body.Ar .newOrder .ui.segment {
+    text-align: right; }
+  body.Ar .newOrder .form-group label {
+    top: 0;
+    left: 1px;
+    right: auto;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px; }
+  body.Ar .newOrder .fields {
+    text-align: right; }
+  body.Ar .ui.radio.checkbox .box, body.Ar .ui.radio.checkbox label {
+    padding-left: 0;
+    padding-right: 1.85714em; }
+  body.Ar .ui.radio.checkbox .box:after, body.Ar .ui.radio.checkbox label:after,
+  body.Ar .ui.radio.checkbox .box:before, body.Ar .ui.radio.checkbox label:before {
+    right: 0;
+    left: auto; }
+  body.Ar .ui.toggle.checkbox .box, body.Ar .ui.toggle.checkbox label {
+    padding-right: 4.5rem;
+    padding-left: 0; }
+  body.Ar .ui.toggle.checkbox .box:before, body.Ar .ui.toggle.checkbox label:before,
+  body.Ar .ui.toggle.checkbox input ~ .box:after, body.Ar .ui.toggle.checkbox input ~ label:after {
+    right: 0;
+    left: auto; }
+  body.Ar .description {
+    text-align: right; }
+  body.Ar .AllOrder .AddOrder {
+    left: 20px;
+    right: auto; }
+
+/*# sourceMappingURL=style.css.map */

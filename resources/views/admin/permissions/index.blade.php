@@ -37,11 +37,11 @@
 
                             </th>
                             <td>
-                                @can('permission_show')
+                                {{-- @can('permission_show')
                                     <a class="btn btn-xs btn-primary" href="{{ route('permissions.show', $permission->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
-                                @endcan
+                                @endcan --}}
                                     <a class="btn btn-xs btn-info" href="{{ route('permissions.edit', $permission->id) }}">
                                         تعديل
                                     </a>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Area;
+use App\Http\Requests\AreaRequest;
 
 use App\Models\Service;
 use Illuminate\Http\Request;
@@ -40,10 +41,10 @@ class AreaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AreaRequest $request)
     {
         $area = Area::create( $request->all() );
-        session()->flash('msg', "s:create ($area->name) successfully ");
+        \Session::flash("msg", "s:تم إضافة منطقة ($area->name) بنجاح");
         return redirect()->route('area.index');
 
         
@@ -80,11 +81,11 @@ class AreaController extends Controller
      * @param  \App\Models\Area  $area
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AreaRequest $request, $id)
     {
         $area = Area::findOrFail($id);
         $area->update( $request->all() );
-        session()->flash('msg', "s:updated ($area->name) successfully ");
+        \Session::flash("msg", "s:تم تعديل منطقة ($area->name) بنجاح");
         return redirect()->route('area.index');
     }
 
@@ -94,8 +95,11 @@ class AreaController extends Controller
      * @param  \App\Models\Area  $area
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Area $area)
+    public function destroy($id)
     {
-        //
+        $area = Area::findOrFail($id);
+        $area->delete();
+        \Session::flash("msg", "w:تم حذف منطقة ($area->name) بنجاح");
+        return redirect()->route('area.index');
     }
 }

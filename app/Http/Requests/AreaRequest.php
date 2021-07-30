@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Area;
 
 class AreaRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class AreaRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,8 +27,17 @@ class AreaRequest extends FormRequest
         return [
            'name' => 'required|max:255',
            'english_name' => 'required|max:255',
-           'status' => 'required:' . Country::STATUS_ACTIVE . ',' . Country::STATUS_HIDDEN .',' .
-           Country::STATUS_DRAFT,
+           'status' => 'required:' . Area::STATUS_ACTIVE . ',' . Area::STATUS_HIDDEN .',' .
+           Area::STATUS_DRAFT,
+        ];
+    }
+
+     public function messages()
+    {
+        return [
+        'name.required' => 'يجب إدخال الإسم',
+        'english_name.required' => 'يجب إدخال باللغة الإنجليزية',
+        'status.required' => 'يجب إدخال القيمة',
         ];
     }
 }

@@ -48,7 +48,7 @@ class CityController extends Controller
     {
           $city = City::create( $request->all() );
           $city->areas()->sync($request->input('areas', []));
-          session()->flash('msg', "s:create ($city->name) successfully ");
+         \Session::flash("msg", "s:تم إضافة مدينة ($city->name) بنجاح");
           return redirect()->route('city.index');
     }
 
@@ -92,10 +92,8 @@ class CityController extends Controller
     public function update(CityRequest $request, $id)
     {
        $city = City::findOrFail($id);
-        //$request->validate( Product::validateRules() );
-
         $city->update( $request->all() );
-        session()->flash('msg', "s:updated ($city->name) successfully ");
+        \Session::flash("msg", "s:تم تعديل مدينة ($city->name) بنجاح");
         return redirect()->route('city.index');
     }
 
@@ -109,7 +107,8 @@ class CityController extends Controller
     {
       $city = City::findOrFail($id);
       $city->delete();
-      session()->flash("msg", "e: Deleted ($city->name) Successfully");
+     // session()->flash("msg", "e: Deleted ($city->name) Successfully");
+     \Session::flash("msg", "w:تم حذف مدينة ($city->name) بنجاح");
       return redirect()->route('city.index');
 
     }

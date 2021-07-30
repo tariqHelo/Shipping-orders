@@ -62,15 +62,15 @@
                                 @endforeach
                             </td>
                             <td>
-                                @can('user_show')
+                                {{-- @can('user_show')
                                     <a class="btn btn-xs btn-primary" href="{{ route('users.show', $user->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
-                                @endcan
+                                @endcan --}}
 
                                 @can('user_edit')
                                     <a class="btn btn-xs btn-info" href="{{ route('users.edit', $user->id) }}">
-                                        {{ trans('global.edit') }}
+                                        تعديل
                                     </a>
                                 @endcan
 
@@ -78,7 +78,7 @@
                                     <form action="{{ route('users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                        <input type="submit" class="btn btn-xs btn-danger" value="حذف">
                                     </form>
                                 @endcan
 

@@ -31,4 +31,12 @@ class CityRequest extends FormRequest
             City::STATUS_DRAFT,
         ];
     }
+    public function messages()
+    {
+        return [
+        'name.required' => 'يجب إدخال الإسم',
+        'english_name.required' => 'يجب إدخال باللغة الإنجليزية',
+        'status.required' => 'يجب إدخال القيمة',
+        ];
+    }
 }

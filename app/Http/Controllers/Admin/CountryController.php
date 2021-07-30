@@ -50,7 +50,8 @@ class CountryController extends Controller
     {
         $country = Country::create($request->all());
         $country->cities($request->input('city_id', []));
-        session()->flash('msg', "s:create ($country->name) successfully ");
+       // session()->flash('msg', "s:create ($country->name) successfully ");
+        \Session::flash("msg", "s:تم إضافة دولة ($country->name) بنجاح");
         return redirect(route('country.index'));
     }
 
@@ -101,7 +102,8 @@ class CountryController extends Controller
         //$request->validate( Product::validateRules() );
 
         $country->update( $request->all() );
-        session()->flash('msg', "s:updated ($country->name) successfully ");
+       // session()->flash('msg', "s:updated ($country->name) successfully ");
+        \Session::flash("msg", "s:تم تعديل دولة ($country->name) بنجاح");
         return redirect()->route('country.index');
     }
 
@@ -115,7 +117,8 @@ class CountryController extends Controller
     {
            $country = Country::findOrFail($id);
            $country->delete();
-           session()->flash("msg", "e: Deleted ($country->name) Successfully");
+          // session()->flash("msg", "w: Deleted ($country->name) Successfully");
+          \Session::flash("msg", "w:تم حذف دولة ($country->name) بنجاح");
            return redirect()->route('country.index');
 
     }

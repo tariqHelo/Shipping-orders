@@ -22,6 +22,10 @@ class PriceController extends Controller
      */
     public function index()
     { 
+        // $location = location::where('zone_id')->first();
+        // $prices = priceService::where('price_id' , $location->id)->where('serivec_id' , 1)->first();
+        // $prices->price;
+       //dd(20);
         $countries = Country::all();
         $services = Service::all();
        return view('admin.area_price.index' , [

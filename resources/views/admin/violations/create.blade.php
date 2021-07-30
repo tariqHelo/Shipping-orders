@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', ' إضافة مدينة')
+@section('title', 'المخالفات')
 
 
 @section('breadcrumb')
@@ -25,9 +25,9 @@
               </div>
             @endif
             <!-- general form elements -->
-            <div class="card card-success">
+            <div class="card card-danger">
               <div class="card-header">
-                <h3 class="card-title-rtl">إضافة مدينة</h3>
+                <h3 class="card-title-rtl">إضافة مخالفة</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->

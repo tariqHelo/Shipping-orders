@@ -4,6 +4,7 @@
 ?>
 @if($msg)
     <?php
+    
     //اول حرفين من الرسالة وتحويلهم الى حروف صغيرة
     $first2Letters = strtolower(substr($msg,0,2));
     if($first2Letters == 's:'){
