@@ -4,15 +4,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PermissionsController;
 use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\UsersController;
-
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\AreaController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ReportController;
-
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PriceController;
+use App\Http\Controllers\Admin\SpendingController;
+use App\Http\Controllers\Admin\CarController;
+use App\Http\Controllers\Admin\ViolationController;
 
 
 
@@ -22,7 +23,6 @@ use App\Http\Controllers\Front\TrackPackageController;
 use App\Http\Controllers\Front\AboutUsController;
 use App\Http\Controllers\Front\ContactUsController;
 use App\Http\Controllers\Front\UserLoginController;
-use App\Http\Controllers\Front\ViolationController;
 
 
 /*
@@ -89,9 +89,20 @@ Route::resource('/order', OrderController::class);
 Route::resource('/price', PriceController::class);
 
 Route::resource('/report', ReportController::class)->middleware(['auth']);
+
 Route::resource('/violation', ViolationController::class);
+Route::get('/violation/delete/{id}', [ViolationController::class , 'destroy'])->name('violation.delete');
 
 Route::resource('/price', PriceController::class);
+Route::get('/price/delete/{id}', [PriceController::class , 'destroy'])->name('price.delete');
+
+
+Route::resource('/car', CarController::class);
+Route::get('/car/delete/{id}', [CarController::class , 'destroy'])->name('car.delete');
+
+Route::resource('/spending', SpendingController::class);
+Route::get('/spending/delete/{id}', [SpendingController::class , 'destroy'])->name('spending.delete');
+
 
 // Route::get('/price', [PriceController::class , 'index'])->name('places_index');
 Route::post('/price/create',[PriceController::class , 'store'])->name('form_store');

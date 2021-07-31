@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'المخالفات')
-
+@section('title' , '')
 
 @section('breadcrumb')
 <ol class="breadcrumb float-sm-right">
@@ -10,12 +9,12 @@
 </ol>
 @endsection
 
-
-
 @section('content')
+@include('shared.msg')
+
     <!-- left column -->
           <div class="col-md-12">
-             @if ($errors->any())
+              @if ($errors->any())
               <div class="alert alert-danger">
                   <ul>
                       @foreach($errors->all() as $message)
@@ -23,19 +22,22 @@
                       @endforeach
                   </ul>
               </div>
-            @endif
+              @endif
             <!-- general form elements -->
-            <div class="card card-danger">
+            <div class="card card-dark">
               <div class="card-header">
-                <h3 class="card-title-rtl">إضافة مخالفة</h3>
+                <h3 class="card-title-rtl">إضافة دولة</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form  action="{{route('violation.store')}}" method="POST">
+             <form role="form" action="{{route('car.update' , $car->id)}}" method="post">
                 @csrf
-                 @include('admin.violations._form', [
-                    'button' => 'إضافة'
+                @method('PUT')
+                
+                 @include('admin.car._form', [
+                    'button' => 'تعديل'
                 ])
+
               </form>
             </div>
             <!-- /.card -->

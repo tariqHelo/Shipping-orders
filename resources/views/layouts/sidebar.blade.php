@@ -156,13 +156,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="{{route('spending.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p> المصاريف</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
+                <a href="{{route('car.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p> توزيع المركبات اليومي</p>
                 </a>

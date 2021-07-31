@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
-@section('title' , '')
+@section('title', 'المخالفات')
+
 
 @section('breadcrumb')
 <ol class="breadcrumb float-sm-right">
@@ -9,10 +10,13 @@
 </ol>
 @endsection
 
+
+
 @section('content')
+@include('shared.msg')
     <!-- left column -->
           <div class="col-md-12">
-              @if ($errors->any())
+             @if ($errors->any())
               <div class="alert alert-danger">
                   <ul>
                       @foreach($errors->all() as $message)
@@ -20,22 +24,20 @@
                       @endforeach
                   </ul>
               </div>
-              @endif
+            @endif
             <!-- general form elements -->
-            <div class="card card-primary">
+            <div class="card card-danger">
               <div class="card-header">
-                <h3 class="card-title-rtl">إضافة دولة</h3>
+                <h3 class="card-title-rtl">تعديل مخالفة</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-             <form role="form" action="{{route('city.update' , $city->id)}}" method="post">
+              <form  action="{{route('viloation.store' , $viloation->id )}}" method="POST">
                 @csrf
-                @method('PUT')
-                
-                 @include('admin.city._form', [
-                    'button' => 'تعديل'
+                @method('PATCH')
+                 @include('admin.violations._form', [
+                    'button' => 'إضافة'
                 ])
-
               </form>
             </div>
             <!-- /.card -->

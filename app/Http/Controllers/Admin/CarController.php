@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Front;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Car;
@@ -14,8 +14,8 @@ class CarController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   $cars = Car::all();
+        return view('admin.car.index' , compact('cars'));
     }
 
     /**
@@ -25,7 +25,9 @@ class CarController extends Controller
      */
     public function create()
     {
-        //
+       return view('admin.car.create',[
+       'car' => new Car()
+       ]);
     }
 
     /**
@@ -36,7 +38,9 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $car = Car::create($request->all());
+        \Session::flash("msg", "s:تم إضافة مركبة ($car->name) بنجاح");
+        return redirect(route('car.index'));
     }
 
     /**
@@ -56,9 +60,14 @@ class CarController extends Controller
      * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function edit(Car $car)
+    public function edit($id)
     {
-        //
+
+        $car = Car::findOrFail($id);
+        return view('admin.car.edit', [
+        'car' => $car,
+        // 'cities' => $cities,
+        ]);
     }
 
     /**
@@ -68,9 +77,12 @@ class CarController extends Controller
      * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Car $car)
+    public function update(Request $request,$id)
     {
-        //
+        $car = Car::findOrFail($id);
+        $car->update($request->all());
+        \Session::flash("msg", "s:تم تعديل مركبة ($car->name) بنجاح");
+        return redirect(route('car.index'));
     }
 
     /**
@@ -79,8 +91,11 @@ class CarController extends Controller
      * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Car $car)
+    public function destroy($id)
     {
-        //
+       $car = Car::findOrFail($id);
+       $car->delete();
+       \Session::flash("msg", "w:تم حذف مركبة ($car->name) بنجاح");
+       return redirect()->route('car.index');
     }
 }

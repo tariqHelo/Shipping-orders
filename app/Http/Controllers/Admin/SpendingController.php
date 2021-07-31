@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Front;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Spending;
@@ -14,8 +14,10 @@ class SpendingController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    { 
+       $spendings = Spending::all();
+      return view('admin.spending.index')
+      ->withSpendings($spendings);
     }
 
     /**
@@ -25,7 +27,10 @@ class SpendingController extends Controller
      */
     public function create()
     {
-        //
+       // $cities = City::pluck('name', 'id');
+        return view('admin.spending.create',[
+        'spending' => new Spending()
+        ]);
     }
 
     /**
@@ -36,7 +41,9 @@ class SpendingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $spending = Spending::create($request->all());
+        \Session::flash("msg", "s:تم إضافة فاتورة ($spending->bill) بنجاح");
+        return redirect(route('spending.index'));
     }
 
     /**
@@ -56,9 +63,13 @@ class SpendingController extends Controller
      * @param  \App\Models\Spending  $spending
      * @return \Illuminate\Http\Response
      */
-    public function edit(Spending $spending)
+    public function edit($id)
     {
-        //
+       $spending = Spending::findOrFail($id);
+        return view('admin.country.edit', [
+            'spending' => $spending,
+           // 'cities' => $cities,
+        ]);
     }
 
     /**
@@ -68,9 +79,12 @@ class SpendingController extends Controller
      * @param  \App\Models\Spending  $spending
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Spending $spending)
-    {
-        //
+    public function update(Request $request, $id)
+    {  
+         $spending = Spending::findOrFail($id);
+        $spending->update($request->all());
+        \Session::flash("msg", "s:تم تعديل فاتورة ($spending->bill) بنجاح");
+        return redirect(route('spending.index'));
     }
 
     /**
@@ -79,8 +93,11 @@ class SpendingController extends Controller
      * @param  \App\Models\Spending  $spending
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Spending $spending)
+    public function destroy($id)
     {
-        //
+        $spending = Spending::findOrFail($id);
+        $spending->delete();
+        \Session::flash("msg", "w:تم حذف فاتورة ($spending->bill) بنجاح");
+        return redirect()->route('spending.index');
     }
 }

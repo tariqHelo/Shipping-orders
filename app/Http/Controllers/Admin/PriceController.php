@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use App\Http\Controllers\Admin\DB;
 use App\Models\Price;
 use App\Models\Service;
 use App\Models\City;
@@ -22,14 +22,13 @@ class PriceController extends Controller
      */
     public function index()
     { 
-        // $location = location::where('zone_id')->first();
-        // $prices = priceService::where('price_id' , $location->id)->where('serivec_id' , 1)->first();
-        // $prices->price;
-       //dd(20);
-        $countries = Country::all();
+        // $location = location::pluck('area_id')->first();
+        // $prices = Price::where('price','=', $location);
+        //$cities = City::where('id', '=', $country->id)->get();
+        //dd($prices);
         $services = Service::all();
        return view('admin.area_price.index' , [
-           'countries' => $countries ,
+        //    'countries' => $countries ,
             'services' =>$services
         ]);
     }
@@ -42,8 +41,10 @@ class PriceController extends Controller
     public function create()
     {
         $countries = Country::all();
+         $services = Service::all();
         return view('admin.area_price.create',[
        'countries' => $countries,
+       'services' =>$services
        ]);
     }
 
@@ -57,6 +58,7 @@ class PriceController extends Controller
     {     //dd($request->all());
            //$services = Service::all();
             $services = $request->services;
+
             $location = new Location();
             $location->country_id = $request->country_id;
             $location->city_id = $request->city_id;
@@ -70,10 +72,9 @@ class PriceController extends Controller
             $priceService->price = $s['value'];//20nis
             $priceService->save();
         }
-        return "good";
-        //   \Session::flash("msg", "تم إضافة الإسعار بنجاح بنجاح");
-
-        //   return redirect()->route('roles.index');
+       // return "good";
+        \Session::flash("msg", "تم إضافة الإسعار بنجاح ");
+        return redirect()->route('price.index');
 
     }
 

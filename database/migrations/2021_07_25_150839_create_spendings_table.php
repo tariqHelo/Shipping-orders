@@ -15,6 +15,9 @@ class CreateSpendingsTable extends Migration
     {
         Schema::create('spendings', function (Blueprint $table) {
             $table->id();
+            $table->string('bill');
+            $table->string('bill_number');
+            $table->date('date');
             $table->timestamps();
         });
     }

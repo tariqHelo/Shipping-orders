@@ -49,8 +49,6 @@ class CountryController extends Controller
     public function store(CountryRequest $request)
     {
         $country = Country::create($request->all());
-        $country->cities($request->input('city_id', []));
-       // session()->flash('msg', "s:create ($country->name) successfully ");
         \Session::flash("msg", "s:تم إضافة دولة ($country->name) بنجاح");
         return redirect(route('country.index'));
     }

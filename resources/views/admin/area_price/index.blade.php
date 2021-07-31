@@ -15,7 +15,7 @@
 
           <div class="card">
             <div class="card-header">
-               <a type="button" class="btn btn-primary" href="">إضافة <i class="fa fa-plus"></i> </a>
+               <a type="button" class="btn btn-primary" href="{{route('price.create')}}">إضافة <i class="fa fa-plus"></i> </a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">

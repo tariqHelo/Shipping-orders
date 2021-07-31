@@ -13,6 +13,7 @@
 @section('content')
         @include('shared.msg')
 
+
           <div class="card">
             <div class="card-header">
                <a type="button" class="btn btn-primary" href="{{ route('violation.create') }}">إضافة <i class="fa fa-plus"></i> </a>
@@ -22,10 +23,14 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                  <th>id</th>
-                  <th>إسم المدينة </th>
-                  <th>الإسم المدينة بالإنجليزي</th>
-                  <th>الحالة</th>
+                  <th>#</th>
+                  <th>رقم المخالفة</th>
+                  <th>تاريخ ووقت المخالفة</th>
+                  <th>نوع المخالفة</th>
+                  <th>المدينة</th>
+                  <th>الشارع</th>
+                  <th> الصورة</th>
+                  <th>حالة المخالفة </th>
                   <th>الإجراءات</th>
                   </tr>
                 </thead>
@@ -55,10 +60,14 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>id</th>
-                  <th>إسم المدينة </th>
-                  <th>الإسم المدينة بالإنجليزي</th>
-                  <th>الحالة</th>
+                  <th>#</th>
+                  <th>رقم المخالفة</th>
+                  <th>تاريخ ووقت المخالفة</th>
+                  <th>نوع المخالفة</th>
+                  <th>المدينة</th>
+                  <th>الشارع</th>
+                  <th> الصورة</th>
+                  <th>حالة المخالفة </th>
                   <th>الإجراءات</th>
                 </tr>
                 </tfoot>

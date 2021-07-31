@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'المخالفات')
+@section('title', 'الفواتير')
 
 
 @section('breadcrumb')
@@ -13,6 +13,8 @@
 
 
 @section('content')
+@include('shared.msg')
+
     <!-- left column -->
           <div class="col-md-12">
              @if ($errors->any())
@@ -25,15 +27,15 @@
               </div>
             @endif
             <!-- general form elements -->
-            <div class="card card-danger">
+            <div class="card card-info">
               <div class="card-header">
-                <h3 class="card-title-rtl">إضافة مخالفة</h3>
+                <h3 class="card-title-rtl">إضافة فاتورة</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form  action="{{route('violation.store')}}" method="POST">
+              <form  action="{{route('spending.store')}}" method="POST">
                 @csrf
-                 @include('admin.violations._form', [
+                 @include('admin.spending._form', [
                     'button' => 'إضافة'
                 ])
               </form>
