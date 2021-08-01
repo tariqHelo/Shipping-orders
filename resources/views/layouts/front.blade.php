@@ -132,6 +132,7 @@
             }
         });
     </script>
+    @yield('script')
 </head>
 
 

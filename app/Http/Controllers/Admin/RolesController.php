@@ -80,20 +80,18 @@ class RolesController extends Controller
     public function destroy(Role $role)
     {
         abort_if(Gate::denies('role_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $role->delete();
+         $role->delete();
          session()->flash("msg", "w: تم الحذف بنجاح");
-
         return back();
 
     }
 
-    public function massDestroy(MassDestroyRoleRequest $request)
-    {
-        Role::whereIn('id', request('ids'))->delete();
-         session()->flash("msg", "w: تم الحذف بنجاح");
+    // public function massDestroy(MassDestroyRoleRequest $request)
+    // {
+    //     Role::whereIn('id', request('ids'))->delete();
+    //      session()->flash("msg", "w: تم الحذف بنجاح");
 
-        return response(null, Response::HTTP_NO_CONTENT);
+    //     return response(null, Response::HTTP_NO_CONTENT);
 
-    }
+    // }
 }

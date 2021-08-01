@@ -22,7 +22,7 @@ class CreateDealersTable extends Migration
             $table->foreignId('area_id')->constrained();
             $table->enum('method' , ['bank', 'monetary']);
             $table->string('commission');
-            $table->enum('status' , ['active', 'draft' , 'hidden']);
+            $table->enum('status' , ['active', 'draft' , 'bloked']);
             $table->foreignId('user_id')->constrained();
             $table->unsignedInteger('role_id');
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade')->default(3);

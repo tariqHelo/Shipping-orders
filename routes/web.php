@@ -67,6 +67,8 @@ Route::resource('/TrackPackage', TrackPackageController::class);
 Route::resource('/about', AboutUsController::class);
 Route::resource('/Contact_Us', ContactUsController::class);
 Route::resource('/user_login', UserLoginController::class);
+Route::get('/get_civilize',[UserLoginController::class , 'get_civilize'])->name('get_civilize');
+Route::get('/get_areas',[UserLoginController::class , 'get_areas'])->name('get_areas');
 
 /* End Route FrontEnd Page */
 
@@ -77,7 +79,7 @@ return view('layouts.delegate');
 
 
 
-Route::get('/admin/dashboard', function () {
+Route::get('/dashboard', function () {
 return view('layouts.admin');
 })->middleware(['auth'])->name('dashboard');
 

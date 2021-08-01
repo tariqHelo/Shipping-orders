@@ -51,9 +51,9 @@
                   </div>
                    <div class="form-group">
                       <label>إضافة المدينة </label>
-                      <select class="select2 @error('city_id') is-invalid @enderror"  name="city_id[]" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
+                      <select class="select2 @error('cities') is-invalid @enderror"  name="cities[]" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
                         @foreach($cities as $id => $cities)
-                            <option value="{{ $id }}" {{ in_array($id, old('city_id', [])) ? 'selected' : '' }}>{{ $cities }}</option>
+                            <option value="{{ $id }}" {{ in_array($id, old('cities', [])) ? 'selected' : '' }}>{{ $cities }}</option>
                         @endforeach
                       </select>
                        @error('cities')

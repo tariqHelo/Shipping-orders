@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Front;
 
+use App\Http\Controllers\Controller;
 use App\Models\Dealer;
+use App\Models\Country;
+
 use Illuminate\Http\Request;
 
 class DealerController extends Controller
@@ -14,7 +17,11 @@ class DealerController extends Controller
      */
     public function index()
     {
-        //
+        // $countries = Country::all();
+        // dd()
+        // return view('front.user_login',[
+        // 'countries' => $countries,
+        // ]);
     }
 
     /**

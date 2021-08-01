@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
-
+use App\Models\Dealer;
+use App\Models\Country;
+use App\Models\City;
+use App\Models\Area;
 use Illuminate\Http\Request;
 
 class UserLoginController extends Controller
@@ -14,7 +17,10 @@ class UserLoginController extends Controller
      */
     public function index()
     {
-      return view('front.user_login');
+       $countries = Country::all();
+       return view('front.user_login',[
+       'countries' => $countries,
+       ]);
     }
 
     /**
@@ -81,5 +87,16 @@ class UserLoginController extends Controller
     public function destroy($id)
     {
         //
+    }
+     public function get_civilize(Request $request)
+    {
+        $cities = City::whereCountryId($request->country_id)->pluck('name' , 'id');
+         return response()->json($cities);
+    }
+
+    public function get_areas(Request $request)
+    {
+        $districts = Area::whereCityId($request->city_id)->pluck('name' , 'id');
+         return response()->json($districts); 
     }
 }
