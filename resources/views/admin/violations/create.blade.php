@@ -10,9 +10,8 @@
 </ol>
 @endsection
 
-
-
 @section('content')
+@include('shared.msg')
     <!-- left column -->
           <div class="col-md-12">
              @if ($errors->any())
@@ -31,7 +30,8 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form  action="{{route('violation.store')}}" method="POST">
+
+              <form  action="{{route('violation.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                  @include('admin.violations._form', [
                     'button' => 'إضافة'

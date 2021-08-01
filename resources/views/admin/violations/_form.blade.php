@@ -10,7 +10,7 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">تاريخ المخالفة</label>
-                    <input type="string" class="form-control @error('date') is-invalid @enderror" name="date"  placeholder="تاريخ المخالفة" value="{{ old('date',$violation->date ) }}">
+                    <input type="date" class="form-control @error('date') is-invalid @enderror" name="date"  placeholder="تاريخ المخالفة" value="{{ old('date',$violation->date ) }}">
                      @error('date')
                         <p class="text-danger">{{ $message }}</p>
                       @enderror

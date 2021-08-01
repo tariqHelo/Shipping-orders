@@ -28,7 +28,7 @@ class ViolationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {  
+    {  //dd(20);
         $cars = Car::pluck('name' , 'id');
        return view('admin.violations.create',[
         'cars' => $cars,
@@ -44,8 +44,18 @@ class ViolationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $violation = Viloation::create($request->all());
+    { 
+        //dd($request->image);
+        if ($request->hasFile('image')) {
+            $file = $request->file('image'); // UplodedFile Object
+            $image_path = $file->store('/', [
+                'disk' => 'uploads',
+            ]);
+            $request->merge([
+                'image' => $image_path,
+            ]);
+        }
+        $violation = Violation::create($request->all());
         \Session::flash("msg", "s:تم إضافة مركبة ($violation->violation_number) بنجاح");
         return redirect(route('violation.index'));
     }
@@ -57,9 +67,9 @@ class ViolationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        $violation = Viloation::findOrFail($id);
-        return view('admin.violation.edit', [
+    { //dd($id);
+        $violation = Violation::findOrFail($id);
+        return view('admin.violations.edit', [
         'violation' => $violation,
         // 'cities' => $cities,
         ]);
@@ -71,12 +81,14 @@ class ViolationController extends Controller
      * @param  \App\Models\Violation  $violation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Violation $violation)
+    public function edit($id)
     {
-       $violation = Viloation::findOrFail($id);
-       return view('admin.violation.edit', [
+       $violation = Violation::findOrFail($id);
+       $cars = Car::pluck('name' , 'id');
+       return view('admin.violations.edit', [
        'violation' => $violation,
-        $cars = Car::pluck('name' , 'id')
+        'cars' => $cars,
+        
        ]);
     }
 
@@ -89,7 +101,7 @@ class ViolationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $violation = Viloation::findOrFail($id);
+        $violation = Violation::findOrFail($id);
         $violation->update($request->all());
         \Session::flash("msg", "s:تم تعديل مركبة ($violation->violation_number) بنجاح");
         return redirect(route('violation.index'));

@@ -50,6 +50,7 @@ class UsersController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
+                'type' => 'Employee',
         ]);
         $empoloye = new Employe([
            'nationality' => $request->post('nationality'),

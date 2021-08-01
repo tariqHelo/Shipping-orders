@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+use App\Models\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
@@ -31,8 +32,15 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-
-        return redirect()->intended(RouteServiceProvider::HOME);
+        
+        if (Auth::user()->getIsAdminAttribute()) {
+            return redirect()->intended('dashboard');
+        }else{
+            return redirect()->route('delegate');
+            //return redirect()->intended('delegate');
+        }
+       //return redirect()->intended(RouteServiceProvider::Home);
+        
     }
 
     /**

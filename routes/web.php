@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+/// Admin Routes
+
 use App\Http\Controllers\Admin\PermissionsController;
 use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\UsersController;
@@ -16,7 +19,14 @@ use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\ViolationController;
 
 
+use App\Http\Controllers\Delegate\OrdersController;
+use App\Http\Controllers\Delegate\HomeController;
+use App\Http\Controllers\Delegate\SettingController;
 
+
+
+
+// Front End Routes
 use App\Http\Controllers\Front\ForBusinessController;
 use App\Http\Controllers\Front\ForDriversController;
 use App\Http\Controllers\Front\TrackPackageController;
@@ -35,6 +45,14 @@ use App\Http\Controllers\Front\UserLoginController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+/* Start Delegate Route */
+Route::resource('/orders', OrdersController::class);
+Route::resource('/home', HomeController::class);
+Route::resource('/settings', SettingController::class);
+/* End Delegate Route */
+
+
 require __DIR__.'/auth.php';
 
 
@@ -53,10 +71,13 @@ Route::resource('/user_login', UserLoginController::class);
 /* End Route FrontEnd Page */
 
 
+Route::get('/delegate', function () {
+return view('layouts.delegate');
+})->middleware(['auth'])->name('delegate');
 
 
 
-Route::get('/dashboard', function () {
+Route::get('/admin/dashboard', function () {
 return view('layouts.admin');
 })->middleware(['auth'])->name('dashboard');
 
@@ -102,7 +123,6 @@ Route::get('/car/delete/{id}', [CarController::class , 'destroy'])->name('car.de
 
 Route::resource('/spending', SpendingController::class);
 Route::get('/spending/delete/{id}', [SpendingController::class , 'destroy'])->name('spending.delete');
-
 
 // Route::get('/price', [PriceController::class , 'index'])->name('places_index');
 Route::post('/price/create',[PriceController::class , 'store'])->name('form_store');

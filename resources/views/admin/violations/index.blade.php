@@ -6,7 +6,7 @@
 @section('breadcrumb')
 <ol class="breadcrumb float-sm-right">
     <li class="breadcrumb-item"><a href="#">Home</a></li>
-    <li class="breadcrumb-item active">city</li>
+    <li class="breadcrumb-item active">violation</li>
 </ol>
 @endsection
 
@@ -35,28 +35,31 @@
                   </tr>
                 </thead>
                 <tbody>
-                  {{-- @foreach ($cities as $city)
+                  @foreach ($violations as $violation)
                     <tr>
-                         <th>{{$city->id}}</th>
-                        <td>{{$city->name}}</td>
-                        <td>{{$city->english_name}}
+                         <th>{{$violation->id}}</th>
+                        <td>{{$violation->violation_number}}</td>
+                        <td>{{$violation->date}}
+                        <td>{{$violation->type}}
+                        <td>{{$violation->city}}</td>
+                        <td>{{$violation->street}}
+                        <td><img src="{{ $violation->image }}" width="60" alt=""></td>
                         </td>
                         <td>
-                              @if($city->status=='active')
-                                  <span class="btn btn-success btn-sm">مفعل</span>
-                              @elseif($city->status=='draft')
-                                  <span class="btn btn-warning btn-sm">غير مفعل</span>
+                              @if($violation->status=='paid')
+                                  <span class="btn btn-success btn-sm">مدفوعة</span>
+                              @elseif($violation->status=='unpaid')
+                                  <span class="btn btn-warning btn-sm">غير مدفوعة</span>
                               @else($order->order_status_id==3)
-                                  <span class="btn btn-danger btn-sm">مخفي</span>
+                                  <span class="btn btn-danger btn-sm">ملغي</span>
                               @endif
                           </td>
                         	<td>   
-                              <a href="{{route('city.edit' , $city->id )}}" class="btn btn-primary btn-sm"><i class='fa fa-edit'></i></a>
-                              <a href="{{route('city.delete' , $city->id )}}" onclick='return confirm("Are you sure dude?")' class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></a>
+                              <a href="{{route('violation.edit' , $violation->id )}}" class="btn btn-primary btn-sm"><i class='fa fa-edit'></i></a>
+                              <a href="{{route('violation.delete' , $violation->id )}}" onclick='return confirm("Are you sure dude?")' class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></a>
                         </td>
                     </tr>
-                  @endforeach --}}
-                 
+                  @endforeach
                 </tbody>
                 <tfoot>
                 <tr>

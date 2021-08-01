@@ -41,6 +41,7 @@
                     {{ __('Log Out') }}
                 </x-dropdown-link>
             </form>
+            
         </div>
       </li>
       <!-- Notifications Dropdown Menu -->

@@ -32,9 +32,9 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form  action="{{route('viloation.store' , $viloation->id )}}" method="POST">
+              <form  action="{{route('violation.update' , $violation->id )}}" method="POST" enctype="multipart/form-data">
                 @csrf
-                @method('PATCH')
+                @method('PUT')
                  @include('admin.violations._form', [
                     'button' => 'إضافة'
                 ])

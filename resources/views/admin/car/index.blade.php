@@ -33,7 +33,7 @@
                     <tr>
                          <th>{{$car->id}}</th>
                         <td>{{$car->name}}</td>
-                        <td>{{$car->english_name}}</td>
+                        <td>{{$car->car_number}}</td>
                         	<td>   
                               <a href="{{route('car.edit' , $car->id )}}" class="btn btn-primary btn-sm"><i class='fa fa-edit'></i></a>
                               <a href="{{route('car.delete' , $car->id )}}}" onclick='return confirm("Are you sure dude?")' class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></a>
