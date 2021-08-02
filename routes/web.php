@@ -45,8 +45,16 @@ use App\Http\Controllers\Front\UserLoginController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/dashboard/delegate', function () {
+return view('layouts.delegate');
+})->middleware(['auth'])->name('delegate');
 
 /* Start Delegate Route */
+Route::get('/delegate', function () {
+return view('auth.login-delegate');
+});
+
+
 Route::resource('/orders', OrdersController::class);
 Route::resource('/home', HomeController::class);
 Route::resource('/settings', SettingController::class);
@@ -73,9 +81,6 @@ Route::get('/get_areas',[UserLoginController::class , 'get_areas'])->name('get_a
 /* End Route FrontEnd Page */
 
 
-Route::get('/delegate', function () {
-return view('layouts.delegate');
-})->middleware(['auth'])->name('delegate');
 
 
 

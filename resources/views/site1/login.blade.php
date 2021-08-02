@@ -1,24 +1,18 @@
 <div class="login"> 
-            <img src="{{ asset('assets/delegate/img/bg2.png')}}" alt="" class="back">
-                <a href="login.html"> <img src="{{ asset('assets/delegate/img/undo.png')}}" alt="" class="undo"> </a>
-
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <img src="{{ asset('assets/delegate/img/logocar.png')}}" alt="" class="logo">
-                                <form action="">
-                                    <div class="form-group">
-
-                                        <select class="custom-select" id="inputGroupSelect02">
-                                            <option selected>12345-رينو</option>
-                                            <option value="1">1222-شوفرليه</option>
-                                            <option value="1">111-مرسييدس</option>
-                                            <option value="1">2324-كامري</option>
-                                            <option value="2">4573-لكزيس</option>
-                                        </select>
-                                    </div>
-                                    <a href="index.html" class="btn btn-block LoginButton"> البدء </a>
-                                </form>
-
-                            </div>
-                        </div>
+    <img src="{{ asset('assets/delegate/img/bg.png')}}" alt="" class="back">
+         <div class="row">
+            <div class="col-xs-12">
+                <img src="{{ asset('assets/delegate/img/logo.png')}}" alt="" class="logo">
+                <form method="POST" action="{{route('login')}}">
+                 @csrf
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="اكتب رقم هاتفك">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" placeholder="****">
+                    </div>
+                    <button type="submit" class="btn btn-block LoginButton"> دخول </button>
+                </form>
+            </div>
+        </div>
 </div>
