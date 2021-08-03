@@ -53,7 +53,7 @@ class User extends Authenticatable
     }
     public function getTypeAttribute()
     {
-    return $this->where('type','=', 'admin')->exists();
+       return $this->where('type','=', 'admin')->exists();
     }
     public function roles()
     {

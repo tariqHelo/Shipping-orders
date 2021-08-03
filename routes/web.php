@@ -18,6 +18,8 @@ use App\Http\Controllers\Admin\SpendingController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\ViolationController;
 use App\Http\Controllers\Admin\DistributionController;
+use App\Http\Controllers\Admin\DealersController;
+
 
 
 use App\Http\Controllers\Delegate\OrdersController;
@@ -36,6 +38,10 @@ use App\Http\Controllers\Front\ContactUsController;
 use App\Http\Controllers\Front\UserLoginController;
 
 
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,21 +52,6 @@ use App\Http\Controllers\Front\UserLoginController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/dashboard/delegate', function () {
-return view('layouts.delegate');
-})->middleware(['auth'])->name('delegate');
-
-/* Start Delegate Route */
-Route::get('/delegate', function () {
-return view('auth.login-delegate');
-});
-
-
-Route::resource('/orders', OrdersController::class);
-Route::resource('/home', HomeController::class);
-Route::resource('/settings', SettingController::class);
-/* End Delegate Route */
-
 
 require __DIR__.'/auth.php';
 
@@ -68,6 +59,26 @@ require __DIR__.'/auth.php';
 Route::get('/', function () {
 return view('layouts.front');
 });
+
+Route::get('/delegate', function () {
+return view('auth.login-delegate');
+});
+
+
+Route::prefix('dashboard')->middleware(['auth'])->group(function(){
+
+    Route::get('/delegate', function () {
+    return view('layouts.delegate');
+    })->name('delegate');
+    /* Start Delegate Route */
+    Route::resource('/orders', OrdersController::class);
+    Route::resource('/home', HomeController::class);
+    Route::resource('/settings', SettingController::class);
+    /* End Delegate Route */
+});
+
+
+
 
 /*Start FrontEnd Page */
 Route::resource('/for_business', ForBusinessController::class);
@@ -85,58 +96,67 @@ Route::get('/get_areas',[UserLoginController::class , 'get_areas'])->name('get_a
 
 
 
-Route::get('/dashboard', function () {
-return view('layouts.admin');
-})->middleware(['auth'])->name('dashboard');
-
-/* Start Admin Route */
-// Permissions
-Route::resource('permissions', PermissionsController::class);
-// Roles
-Route::resource('roles', RolesController::class);
-// Users
-Route::resource('users', UsersController::class);
-/* End Admin Route */
-
-Route::resource('/country', CountryController::class);
-Route::get('/country/delete/{id}', [CountryController::class , 'destroy'])->name('country.delete');
-// Route::get('/country/edit/{id}', [CountryController::class , 'edit'])->name('country.edit');
-
-Route::resource('/city', CityController::class);
-Route::get('/city/delete/{id}', [CityController::class , 'destroy'])->name('city.delete');
-// Route::get('/city/edit/{id}', [CityController::class , 'edit'])->name('city.edit');
 
 
-Route::resource('/area', AreaController::class);
-Route::get('/area/delete/{id}', [AreaController::class , 'destroy'])->name('area.delete');
+Route::prefix('admin')->middleware(['auth'])->group(function(){
 
-Route::resource('/service', ServiceController::class);
-Route::get('/service/delete/{id}', [ServiceController::class , 'destroy'])->name('service.delete');
+    Route::get('/dashboard', function () {
+    return view('layouts.admin');
+    })->name('dashboard');
+        
+    /* Start Admin Route */
+    // Permissions
+    Route::resource('permissions', PermissionsController::class);
+    // Roles
+    Route::resource('roles', RolesController::class);
+    // Users
+    Route::resource('users', UsersController::class);
+    Route::resource('dealers', DealersController::class);
+    /* End Admin Route */
+
+    Route::resource('/country', CountryController::class);
+    Route::get('/country/delete/{id}', [CountryController::class , 'destroy'])->name('country.delete');
+    // Route::get('/country/edit/{id}', [CountryController::class , 'edit'])->name('country.edit');
+
+    Route::resource('/city', CityController::class);
+    Route::get('/city/delete/{id}', [CityController::class , 'destroy'])->name('city.delete');
+    // Route::get('/city/edit/{id}', [CityController::class , 'edit'])->name('city.edit');
 
 
-Route::resource('/order', OrderController::class);
-Route::resource('/price', PriceController::class);
+    Route::resource('/area', AreaController::class);
+    Route::get('/area/delete/{id}', [AreaController::class , 'destroy'])->name('area.delete');
 
-Route::resource('/report', ReportController::class)->middleware(['auth']);
-
-Route::resource('/violation', ViolationController::class);
-Route::get('/violation/delete/{id}', [ViolationController::class , 'destroy'])->name('violation.delete');
-
-Route::resource('/price', PriceController::class);
-Route::get('/price/delete/{id}', [PriceController::class , 'destroy'])->name('price.delete');
+    Route::resource('/service', ServiceController::class);
+    Route::get('/service/delete/{id}', [ServiceController::class , 'destroy'])->name('service.delete');
 
 
-Route::resource('/car', CarController::class);
-Route::get('/car/delete/{id}', [CarController::class , 'destroy'])->name('car.delete');
+    Route::resource('/order', OrderController::class);
+    Route::resource('/price', PriceController::class);
 
-Route::resource('/distribution', DistributionController::class);
+    Route::resource('/report', ReportController::class)->middleware(['auth']);
+
+    Route::resource('/violation', ViolationController::class);
+    Route::get('/violation/delete/{id}', [ViolationController::class , 'destroy'])->name('violation.delete');
+
+    Route::resource('/price', PriceController::class);
+    Route::get('/price/delete/{id}', [PriceController::class , 'destroy'])->name('price.delete');
 
 
-Route::resource('/spending', SpendingController::class);
-Route::get('/spending/delete/{id}', [SpendingController::class , 'destroy'])->name('spending.delete');
+    Route::resource('/car', CarController::class);
+    Route::get('/car/delete/{id}', [CarController::class , 'destroy'])->name('car.delete');
 
-// Route::get('/price', [PriceController::class , 'index'])->name('places_index');
-Route::post('/price/create',[PriceController::class , 'store'])->name('form_store');
+    Route::resource('/distribution', DistributionController::class);
+
+
+    Route::resource('/spending', SpendingController::class);
+    Route::get('/spending/delete/{id}', [SpendingController::class , 'destroy'])->name('spending.delete');
+
+    // Route::get('/price', [PriceController::class , 'index'])->name('places_index');
+    Route::post('/price/create',[PriceController::class , 'store'])->name('form_store');
+});
+
+
+
 
 Route::get('/get_cities',[PriceController::class , 'get_cities'])->name('get_cities');
 Route::get('/get_districts',[PriceController::class , 'get_districts'])->name('get_districts');

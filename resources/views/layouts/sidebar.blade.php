@@ -69,7 +69,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('users.index')}}" class="nav-link">
+                <a href="{{route('dealers.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>التجار</p>
                 </a>

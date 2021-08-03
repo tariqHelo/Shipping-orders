@@ -16,7 +16,8 @@ class DelegateController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::where('type' , '=' , 'delegate')->get();
+        return view('admin.users.index', compact('users'));
     }
 
     /**
