@@ -33,10 +33,12 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
         
-        if (Auth::user()->getIsAdminAttribute()) {
+        if (Auth::user()->getTypeAttribute()) {
+            //dd('ok');
            return redirect()->intended('dashboard');
            //return redirect()->intended(RouteServiceProvider::HOME);
         }else{
+            //dd('no');
             //return redirect()->intended(RouteServiceProvider::DELEGATE);
              return redirect()->route('delegate');
             //return redirect()->intended('delegate');

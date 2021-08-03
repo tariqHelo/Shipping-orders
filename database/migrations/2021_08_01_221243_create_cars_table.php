@@ -28,7 +28,7 @@ class CreateCarsTable extends Migration
              $table->date('insurance_date');
              $table->date('insurance_expiry_date');
              $table->string('insurance_company');
-             $table->string('ownership_photo');
+             $table->string('image');
              $table->string('salik_tag_number');
              $table->string('Traffic_toll_card_number');
              $table->string('passing_card_number');

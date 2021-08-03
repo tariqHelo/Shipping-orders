@@ -174,7 +174,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('car.index')}}" class="nav-link">
+                <a href="{{route('distribution.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p> توزيع المركبات اليومي</p>
                 </a>

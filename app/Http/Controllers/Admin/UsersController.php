@@ -51,10 +51,11 @@ class UsersController extends Controller
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
                 'type' => 'Employee',
+                'status' => 'active',
         ]);
         $empoloye = new Employe([
-           'nationality' => $request->post('nationality'),
-           'image' => $file1->store('/', ['disk' => 'uploads']),
+            'nationality' => $request->post('nationality'),
+            'image' => $file1->store('/', ['disk' => 'uploads']),
             'work_start' => $request->post('work_start'),
             'license' => $request->post('license'),
             'license_expiry' => $request->post('license_expiry'),
@@ -67,14 +68,12 @@ class UsersController extends Controller
             'passport_expiry' => $request->post('passport_expiry'),
             'passport_image' => $file4->store('/', ['disk' => 'uploads']),
             'residence_expiry' => $request->post('residence_expiry'),
-           'residence_image' => $file5->store('/', ['disk' => 'uploads']),
+            'residence_image' => $file5->store('/', ['disk' => 'uploads']),
             'delivery_commission' => $request->post('delivery_commission'),
             'receipt_ommission' => $request->post('receipt_ommission'),
-             $user->user_id = Auth::user()->id,
+             'user_id' => $user->id,
             'status' => $request->post('status', 'active'),
         ]);
-        $empoloye->save();
-        $user->save();
         $user->roles()->sync($request->input('roles', []));
         \Session::flash("msg", "s:تم إضافة المستخدم ($user->name) بنجاح");
         return redirect()->route('users.index');

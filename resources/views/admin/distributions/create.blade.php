@@ -32,9 +32,9 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form  action="{{route('car.store')}}" method="POST" enctype="multipart/form-data">
+              <form  action="{{route('distribution.store')}}" method="POST" >
                 @csrf
-                 @include('admin.car._form', [
+                 @include('admin.distributions._form', [
                     'button' => 'إضافة'
                 ])
               </form>

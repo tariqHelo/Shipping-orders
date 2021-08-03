@@ -24,7 +24,8 @@ class User extends Authenticatable
         'email',
         'password',
         'type',
-        'phone'
+        'phone',
+        'status'
     ];
 
     /**
@@ -49,6 +50,10 @@ class User extends Authenticatable
     public function getIsAdminAttribute() 
     {
         return $this->roles()->where('id', 1)->exists();
+    }
+    public function getTypeAttribute()
+    {
+    return $this->where('type','=', 'admin')->exists();
     }
     public function roles()
     {

@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\PriceController;
 use App\Http\Controllers\Admin\SpendingController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\ViolationController;
+use App\Http\Controllers\Admin\DistributionController;
 
 
 use App\Http\Controllers\Delegate\OrdersController;
@@ -127,6 +128,9 @@ Route::get('/price/delete/{id}', [PriceController::class , 'destroy'])->name('pr
 
 Route::resource('/car', CarController::class);
 Route::get('/car/delete/{id}', [CarController::class , 'destroy'])->name('car.delete');
+
+Route::resource('/distribution', DistributionController::class);
+
 
 Route::resource('/spending', SpendingController::class);
 Route::get('/spending/delete/{id}', [SpendingController::class , 'destroy'])->name('spending.delete');
